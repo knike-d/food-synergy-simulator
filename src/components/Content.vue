@@ -5,16 +5,20 @@
     </div>
     <div class="main-content">
       <div class="food-select-container">
-        <div class="food-select-button">
+        <div class="food-select-btn">
           <FoodSelectButton/>
         </div>
         <div class="multiply-container">
           <div class="multiply"></div>
         </div>
-        <div class="food-select-button">
+        <div class="food-select-btn">
           <FoodSelectButton/>
         </div>
       </div>
+
+      <a class="result-btn">
+        食べ合わせをチェック！
+      </a>
 
     </div>
   </div>
@@ -48,7 +52,7 @@ export default {
     max-height: $container-height * 7.5 * 1px;
     margin: 5% 0 5% 0;
 
-    .food-select-button{
+    .food-select-btn{
       display: inline-block;
       height: 100%;
       width: $container-height * 1%;
@@ -86,5 +90,18 @@ export default {
       }
     }
   }
+
+  .result-btn{
+    display: block;
+    width: 50%;
+    margin: auto;
+    padding: 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    background: #FFCF4A;
+    border-radius: 50px;
+  }
+
 }
 </style>
