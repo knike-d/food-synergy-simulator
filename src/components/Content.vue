@@ -42,23 +42,25 @@ export default {
   margin: auto;
 
   .food-select-container{
-    $container-height: clamp(0px, 38vw, 38px*7.5);
-    height: $container-height;
+    $container-height: 39;
 
+    height: $container-height * 1vw;
+    max-height: $container-height * 7.5 * 1px;
     margin: 5% 0 5% 0;
 
     .food-select-button{
       display: inline-block;
-      height: $container-height;
-      width: $container-height;
+      height: 100%;
+      width: $container-height * 1%;
     }
     .multiply-container{
-      $multiply-size: 9%;
-      $multiply-padding: (38% - $multiply-size)/2;
+      //0.225を調節する
+      $multiply-size: $container-height * 0.225;
+      $multiply-padding: ($container-height - $multiply-size)/2 * 1%;
 
       display: inline-block;
-      height: 21.95%;
-      width: 9%;
+      height: $multiply-size/$container-height * 100%;
+      width: $multiply-size * 1%;
       padding: $multiply-padding 2% $multiply-padding 2%;
       
       .multiply{
