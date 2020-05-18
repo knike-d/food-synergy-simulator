@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="top">
-      あああ
+      <div class="top-title">
+        食べ合わせ<br>シミュレーター
+      </div>
     </div>
     <div class="main-content">
       <div class="food-select-container">
@@ -20,25 +22,41 @@
         食べ合わせをチェック！
       </a>
 
+      <TabContainer/>
+
+
     </div>
   </div>
 </template>
 
 <script>
 import FoodSelectButton from './FoodSelectButton.vue'
+import TabContainer from './TabContainer.vue'
 
 export default {
   components: {
-    FoodSelectButton
+    FoodSelectButton,
+    TabContainer
   }
 }
 </script>
 
 <style lang="scss">
 .top{
-    height: 66vw;
-    max-height: 66px*7.5;
-    background-color: #FFCF4A;
+  height: 66vw;
+  max-height: 66px*7.5;
+  background-color: #FFCF4A;
+
+  .top-title{
+    font-size: clamp(0px, 9vw, 9px*5);
+    font-weight: bold;
+    line-height: clamp(0px, 12vw, 12px*5);
+    color: black;
+    height: 100%;
+    max-width: 750px;
+    text-align: left;
+    padding: 10% 0 0% 5%;
+  }
 }
 
 .main-content{
@@ -93,15 +111,16 @@ export default {
 
   .result-btn{
     display: block;
+    font-size: clamp(0px, 3.8vw, 3.8px*5);
+    font-weight: bold;
     width: 50%;
     margin: auto;
-    padding: 0.7rem;
+    padding: clamp(0px, 3vw, 3px*5) clamp(0px, 6vw, 6px*5);
     text-align: center;
     text-decoration: none;
     color: #000;
     background: #FFCF4A;
     border-radius: 50px;
   }
-
 }
 </style>
