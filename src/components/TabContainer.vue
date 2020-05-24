@@ -2,18 +2,39 @@
   <div class="tab-container">
     <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">食材1</label>
     <div class="tab-content">
-      コンテンツ1
+      <ResultCard/>
     </div>
     <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">食材2</label>
     <div class="tab-content">
-      コンテンツ2
+      <ResultCard/>
     </div>
     <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">食べ合わせ相性</label>
     <div class="tab-content">
-      コンテンツ3
+      <ResultCard/>
     </div>
   </div>
 </template>
+
+<script>
+import ResultCard from './ResultCard.vue'
+
+export default {
+  components: {
+    ResultCard
+  }
+  /*,
+  data(){
+    return {
+      objects: {
+        judgment: true,
+        id: 10,
+        explanation: "説明あああああああああああああああああああ"
+      }
+    }
+  }
+  */
+}
+</script>
 
 <style lang="scss">
 .tab-container {
@@ -35,7 +56,6 @@
 .tab-content {
 	height:0;
 	opacity:0;
-	padding: 0 5%;
 	pointer-events:none;
 	transform: translateX(-30%);
 	transition: transform .3s 80ms, opacity .3s 80ms;

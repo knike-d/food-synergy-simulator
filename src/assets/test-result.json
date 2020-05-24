@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "judgment": true,
+        "nutrition": ["カルシウム", "マグネシウム"],
+        "explanation": "相性結果1"
+    },
+    {
+        "id": 2,
+        "judgment": true,
+        "nutrition": ["鉄分", "ビタミンC"],
+        "explanation": "相性結果2"
+    }
+]
