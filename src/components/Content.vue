@@ -119,11 +119,12 @@ $section2-bg-color: #FFBB00;
   {
     content: '';
     position: absolute;
-    top: 120px;
+    top: clamp(0px, 26vw, 26px*7.5);
     bottom: 0;
     
     width: 100%;
     height: $spacer-height;
+    max-height: $spacer-height/1vw *7.5px;
     background: url('') green; // needs to be next sections background
     background-size: 100%;
     
@@ -133,6 +134,7 @@ $section2-bg-color: #FFBB00;
 .section-bubble1
 {
   @include section-bubble-with-colors(a, $section1-bg-color, $section2-bg-color);
+  margin-bottom: clamp(0px, 20vw, 20px*7.5);
 }
 
 .main-content{
