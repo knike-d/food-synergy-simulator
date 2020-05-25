@@ -17,7 +17,21 @@
     </header>
 
     <Content/>
-    
+
+    <div class="footer">
+      <ul class="footer-ul">
+          <li>
+              <a class="footer-a" href="#inline-privacy">プライバシーポリシー</a>
+          </li>
+          <li>
+              <a class="footer-a" href="https://forms.gle/Fhc3Z91hsQC5RnPZ9" target="_blank">お問い合わせ</a>
+          </li>
+      </ul>
+          
+      <div align="center">
+          &copy; 2019 KNKDEB.com
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,6 +52,24 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000;
+}
+
+.footer {
+  border-top: 7px solid #e0e0e0;
+  padding: 3rem 0 5rem 0;
+  margin-top: 2rem;
+  color: #000;
+  background-color: #FFF;
+}
+
+.footer .footer-ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.footer .footer-a {
+  color: #000000;
+  text-decoration: none;
 }
 </style>
