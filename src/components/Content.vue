@@ -7,15 +7,11 @@
     </div>
     <div class="main-content">
       <div class="food-select-container">
-        <div class="food-select-btn">
-          <FoodSelectButton/>
-        </div>
+        <FoodSelectButton/>
         <div class="multiply-container">
           <div class="multiply"></div>
         </div>
-        <div class="food-select-btn">
-          <FoodSelectButton/>
-        </div>
+        <FoodSelectButton/>
       </div>
 
       <a @click="showResult" class="result-btn">
@@ -23,7 +19,6 @@
       </a>
 
       <TabContainer ref="tab" :select-food-id="selectFoodID"></TabContainer>
-
 
     </div>
   </div>
@@ -74,31 +69,26 @@ export default {
   margin: auto;
 
   .food-select-container{
-    $container-height: 39;
+    display: flex;
+    justify-content: center;
+    $container-height: 39vw;
 
-    height: $container-height * 1vw;
-    max-height: $container-height * 7.5 * 1px;
+    height: $container-height;
+    max-height: $container-height/1vw * 7.5 * 1px;
     margin: 5% 0 5% 0;
 
-    .food-select-btn{
-      display: inline-block;
-      height: 100%;
-      width: $container-height * 1%;
-    }
     .multiply-container{
       //0.225を調節する
       $multiply-size: $container-height * 0.225;
-      $multiply-padding: ($container-height - $multiply-size)/2 * 1%;
+      $multiply-padding: ($container-height - $multiply-size)/2vw * 1%;
 
-      display: inline-block;
       height: $multiply-size/$container-height * 100%;
-      width: $multiply-size * 1%;
+      width: $multiply-size/1vw * 1%;
       padding: $multiply-padding 2% $multiply-padding 2%;
       
       .multiply{
         height:100%;
         width:100%;
-        display:block;
         position:relative;
       } 
       .multiply:before, .multiply:after{
