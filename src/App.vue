@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <header id="luxbar" class="luxbar-static" style="margin-bottom: 40px;z-index:10">
+    <header id="luxbar" class="luxbar-static" style="margin-bottom: 40px;z-index:10;box-shadow:none;">
       <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
-      <div class="luxbar-menu luxbar-menu-right luxbar-menu-light">
+      <div class="luxbar-menu luxbar-menu-right luxbar-menu-light" style="background-color: white;">
           <ul class="luxbar-navigation">
               <li class="luxbar-header">
                   <a href="#" class="luxbar-brand">KNKDEV.com</a>
