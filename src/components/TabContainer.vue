@@ -2,37 +2,62 @@
   <div class="tab-container">
     <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">食材1</label>
     <div class="tab-content">
-      <ResultCard/>
     </div>
     <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">食材2</label>
     <div class="tab-content">
-      <ResultCard/>
     </div>
     <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">食べ合わせ相性</label>
     <div class="tab-content">
-      <ResultCard/>
+      <ResultCard v-for="(result, index) in results" :key="result.id" v-bind="results[index]"></ResultCard>
     </div>
   </div>
 </template>
 
 <script>
 import ResultCard from './ResultCard.vue'
+import foodSynergyList from '../assets/test-result.json'
+import foodList from '../assets/food-list.json'
 
 export default {
   components: {
     ResultCard
-  }
-  /*,
+  },
+  
   data(){
-    return {
-      objects: {
-        judgment: true,
-        id: 10,
-        explanation: "説明あああああああああああああああああああ"
-      }
+    return{
+      foodSynergyList: foodSynergyList,
+      foodList: foodList,
+      results:[]
+    }
+  },
+  props: [
+    "selectFoodId"
+  ],
+  methods: {
+    
+    calcResult(){
+      
+      const selectFood = this.foodList.filter(item => {
+        if(item.id == this.selectFoodId[0] || item.id == this.selectFoodId[1]){
+          return true
+        }
+      })
+
+      const results = this.foodSynergyList.filter(item => { 
+        
+        for(let i=0; i<selectFood[0].nutrition.length; i++){
+          for(let j=0; j<selectFood[1].nutrition.length; j++){
+            let comparisonList
+            comparisonList = [].concat(selectFood[0].nutrition[i], selectFood[1].nutrition[j])
+            if(item.nutrition.sort().toString() == comparisonList.sort().toString()){
+              return true
+            }
+          }
+        }
+      })
+      this.results = results
     }
   }
-  */
 }
 </script>
 

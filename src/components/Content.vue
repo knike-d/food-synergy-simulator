@@ -18,11 +18,11 @@
         </div>
       </div>
 
-      <a class="result-btn">
+      <a @click="showResult" class="result-btn">
         食べ合わせをチェック！
       </a>
 
-      <TabContainer/>
+      <TabContainer ref="tab" :select-food-id="selectFoodID"></TabContainer>
 
 
     </div>
@@ -37,6 +37,16 @@ export default {
   components: {
     FoodSelectButton,
     TabContainer
+  },
+  data(){
+    return{
+      selectFoodID:[1, 80]
+    }
+  },
+  methods :{
+    showResult(){
+      this.$refs.tab.calcResult();
+    }
   }
 }
 </script>
