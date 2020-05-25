@@ -1,35 +1,45 @@
 <template>
   <div class="card">
     <div class="judgment-wrap">
-      <div v-if="false" class="judgment-good"></div>
-      <div v-if="true" class="judgment-bad">
+      <div v-if="judgment == 1" class="judgment-good"></div>
+      <div v-else-if="judgment == -1" class="judgment-bad">
           <div class="bad-mark"></div>
       </div>
-      <div class="number">相性図鑑No.10</div>
+      <div class="number">相性図鑑No.{{ id }}</div>
     </div>
     <div class="section-column-line"></div>
     <div class="chara-container">
       <div class="chara-wrap">
         <div class="chara-icon"></div>
-        <div class="chara-name">マグネシウムうう</div>
+        <div class="chara-name">{{ nutrition[0] }}</div>
       </div>
       <div class="chara-multiply-wrap">
         <div class="chara-multiply"></div>
       </div>
       <div class="chara-wrap">
         <div class="chara-icon"></div>
-        <div class="chara-name">マグネシウムううう</div>
+        <div class="chara-name">{{ nutrition[1] }}</div>
       </div>
     </div>
     <div class="section-row-line"></div>
     <div class="explanation-wrap">
       <div class="explanation">
-        マグネシウムは骨芽細胞に働きかけ、骨の中に入るカルシウム量を調節するため、不足するとカルシウムの骨形成に役立ちません。<br>
-        カルシウムとのバランスは1:2がいいと言われています。
+        {{ explanation }}
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props:[
+    "id",
+    "judgment",
+    "nutrition",
+    "explanation"
+  ]
+}
+</script>
 
 <style lang="scss">
 $line-weight: 1vw;
@@ -44,7 +54,7 @@ $card-inside-radius: 13px;
   height: auto;
   grid-template-rows: clamp(0px, $row-height, $row-height/1vw*7.5px) clamp(0px, $line-weight, $line-weight/1vw*7.5px) 1fr;
   grid-template-columns: 1fr clamp(0px, $line-weight, $line-weight/1vw*7.5px) 2fr;
-  margin: auto;
+  margin: 0 auto 4% auto;
   border: clamp(0px, $line-weight, $line-weight/1vw*7.5px) solid black;
   border-radius: $card-outside-radius;
 
