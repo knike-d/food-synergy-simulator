@@ -1,8 +1,11 @@
 <template>
   <div class="food-select-btn-wrap">
-      <div class="plus-mark" @click="openModal"></div>
-      <p class="btn-text" @click="openModal">食材を選択しよう！</p>
-    <Modal v-show="modalState" @close="closeModal"/>
+      <div class="food-select-btn" @click="openModal">
+        <div class="plus-mark" v-if="btnState"></div>
+        <img class="btn-img" :src="imgPath" v-else>
+        <p class="btn-text">{{foodName}}</p>
+      </div>
+    <Modal v-show="modalState" @update-btn="updateBtn" @close="closeModal"/>
   </div>
 </template>
 
@@ -16,6 +19,14 @@ export default {
   data(){
     return{
       modalState: false,
+      btnState: true,
+      foodName: "食材を選択しよう！",
+      imgPath:""
+    }
+  },
+  props:{
+    btnName:{
+      type: String
     }
   },
   methods :{
@@ -24,6 +35,13 @@ export default {
     },
     closeModal(){
       this.modalState = false
+    },
+    updateBtn(foodItem, imgPath){
+      this.foodName = foodItem.name
+      this.imgPath = imgPath
+      this.btnState = false
+      this.closeModal()
+      this.$emit("update-food", foodItem, this.btnName)
     }
   }
 }
@@ -31,11 +49,14 @@ export default {
 
 <style lang="scss">
 .food-select-btn-wrap{
+  position: relative;
   height: 100%;
-  width: 39%;
+  width: 35%;
   border: 1px dotted black;
-
-
+  .food-select-btn{
+    position: absolute;
+    width: 100%;
+    height: 100%;
     .plus-mark{
       position: relative;
       width: 3%;
@@ -43,7 +64,6 @@ export default {
       margin: 37% auto 20% auto;
       border-radius:20px;
       background-color: #FFCF4A;
-
       &:before{
         position: absolute;
         content: "";
@@ -56,12 +76,22 @@ export default {
         transform:rotate(90deg);
       }
     }
-  
-
-  .btn-text{
-    font-size: clamp(0px, 3.8vw, 3.8px*5);
-    height: 17%;
-    margin: 0;
+    .btn-img{
+      display: block;
+      width: 60%;
+      height: 83%;
+      object-fit: contain;
+      margin: auto;
+    }
+    .btn-text{
+      font-size: clamp(0px, 3.4vw, 3.4px*6);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      height: 17%;
+      margin: 0;
+    }
   }
 }
 

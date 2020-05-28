@@ -13,18 +13,18 @@
     </div>
     <div class="main-content">
       <div class="food-select-container">
-        <FoodSelectButton/>
+        <FoodSelectButton :btn-name="'selectFood1'" @update-food="updateSelectFood"/>
         <div class="multiply-container">
           <div class="multiply"></div>
         </div>
-        <FoodSelectButton/>
+        <FoodSelectButton :btn-name="'selectFood2'" @update-food="updateSelectFood"/>
       </div>
 
       <a @click="showResult" class="result-btn">
         食べ合わせをチェック！
       </a>
 
-      <TabContainer ref="tab" :select-food-id="selectFoodID"></TabContainer>
+      <TabContainer ref="tab" :select-food-list="selectFoodList"></TabContainer>
 
     </div>
   </div>
@@ -41,12 +41,20 @@ export default {
   },
   data(){
     return{
-      selectFoodID:[1, 80]
+      selectFoodList:[{},{}],
+      selectFood1:{}, 
+      selectFood2:{}
+      
     }
   },
   methods :{
     showResult(){
+      this.selectFoodList[0] = this.selectFood1
+      this.selectFoodList[1] = this.selectFood2
       this.$refs.tab.calcResult();
+    },
+    updateSelectFood(foodItem, btnName){
+      this[btnName] = foodItem
     }
   }
 }
@@ -114,11 +122,12 @@ $section2-bg-color: #FFBB00;
   {
     content: '';
     position: absolute;
-    top: 120px;
+    top: clamp(0px, 25vw, 25px*7.5);
     bottom: 0;
     
     width: 100%;
     height: $spacer-height;
+    max-height: $spacer-height/1vw *7.5px;
     background: url('') green; // needs to be next sections background
     background-size: 100%;
     
@@ -128,6 +137,7 @@ $section2-bg-color: #FFBB00;
 .section-bubble1
 {
   @include section-bubble-with-colors(a, $section1-bg-color, $section2-bg-color);
+  margin-bottom: clamp(0px, 20vw, 20px*7.5);;
 }
 
 .main-content{
@@ -137,7 +147,7 @@ $section2-bg-color: #FFBB00;
   .food-select-container{
     display: flex;
     justify-content: center;
-    $container-height: 39vw;
+    $container-height: 35vw;
 
     height: $container-height;
     max-height: $container-height/1vw * 7.5 * 1px;
@@ -150,7 +160,7 @@ $section2-bg-color: #FFBB00;
 
       height: $multiply-size/$container-height * 100%;
       width: $multiply-size/1vw * 1%;
-      padding: $multiply-padding 2% $multiply-padding 2%;
+      padding: $multiply-padding 4% $multiply-padding 4%;
       
       .multiply{
         height:100%;
