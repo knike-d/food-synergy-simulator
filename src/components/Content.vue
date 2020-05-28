@@ -122,7 +122,11 @@ $section2-bg-color: #FFBB00;
   {
     content: '';
     position: absolute;
+<<<<<<< HEAD
     top: clamp(0px, 25vw, 25px*7.5);
+=======
+    top: clamp(0px, 26vw, 26px*7.5);
+>>>>>>> develop
     bottom: 0;
     
     width: 100%;
@@ -137,7 +141,11 @@ $section2-bg-color: #FFBB00;
 .section-bubble1
 {
   @include section-bubble-with-colors(a, $section1-bg-color, $section2-bg-color);
+<<<<<<< HEAD
   margin-bottom: clamp(0px, 20vw, 20px*7.5);;
+=======
+  margin-bottom: clamp(0px, 20vw, 20px*7.5);
+>>>>>>> develop
 }
 
 .main-content{
