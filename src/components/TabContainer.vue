@@ -15,7 +15,7 @@
 
 <script>
 import ResultCard from './ResultCard.vue'
-import foodSynergyList from '../assets/test-result.json'
+import foodSynergyList from '../assets/result.json'
 import foodList from '../assets/food-list.json'
 
 export default {
