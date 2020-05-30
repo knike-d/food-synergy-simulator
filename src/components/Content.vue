@@ -44,7 +44,6 @@ export default {
       selectFoodList:[{},{}],
       selectFood1:{}, 
       selectFood2:{}
-      
     }
   },
   methods :{
@@ -76,7 +75,10 @@ export default {
     height: 100%;
     max-width: 750px;
     text-align: left;
-    padding: 10% 0 0% 5%;
+    padding: 8% 0 0% 5%;
+    margin:auto;
+  z-index: 2;
+
   }
 }
 
@@ -122,22 +124,24 @@ $section2-bg-color: #FFBB00;
   {
     content: '';
     position: absolute;
-    top: clamp(0px, 26vw, 26px*7.5);
+    //top: clamp(0px, 26vw, 26px*7.5);
     bottom: 0;
     
     width: 100%;
     height: $spacer-height;
-    max-height: $spacer-height/1vw *7.5px;
+    max-height: 240px;
     background: url('') green; // needs to be next sections background
     background-size: 100%;
     
-    transform: translate(-50%, 100%);
+    transform: translate(-50%);
   }
 }
 .section-bubble1
 {
   @include section-bubble-with-colors(a, $section1-bg-color, $section2-bg-color);
   margin-bottom: clamp(0px, 20vw, 20px*7.5);
+  height: 100%;
+  z-index: 0;
 }
 
 .main-content{
