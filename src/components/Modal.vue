@@ -117,6 +117,7 @@ $row-height: 20vw;
         height: 100%;
         position: relative;
         display: inline-block;
+        cursor: pointer;
         &::before{
           content: '';
           width: 40%;
@@ -138,6 +139,7 @@ $row-height: 20vw;
         border-radius:20px;
         margin: 0 clamp(0px,3vw,3px*7.5) 0 0;
         transform:rotate(-45deg);
+        cursor: pointer;
         
         &:before{
           position: absolute;
@@ -163,6 +165,7 @@ $row-height: 20vw;
           padding: 2% 3%;
           border-top: 1px dotted orange;
           border-bottom:1px dotted #FFCF4A;
+          cursor: pointer;
         }
       }
       #food-cat-wrap{
@@ -177,6 +180,7 @@ $row-height: 20vw;
           width: 100%;
           height: 100%;
           border: 1px dotted black;
+          cursor: pointer;
           .cat-img{
             display: block;
             width: 60%;

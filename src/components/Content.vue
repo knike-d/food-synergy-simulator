@@ -198,6 +198,7 @@ $section2-bg-color: #FFBB00;
     color: #000;
     background: #FFCF4A;
     border-radius: 50px;
+    cursor: pointer;
   }
 }
 </style>

@@ -57,6 +57,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 100%;
+    cursor: pointer;
     .plus-mark{
       position: relative;
       width: 3%;
