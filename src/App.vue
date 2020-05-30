@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header id="luxbar" class="luxbar-static" style="margin-bottom: 40px;z-index:100;box-shadow:none;">
+    <header id="luxbar" class="luxbar-static" style="margin-bottom: 40px;z-index:10;box-shadow:none;">
       <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
       <div class="luxbar-menu luxbar-menu-right luxbar-menu-light" style="background-color: white;">
           <ul class="luxbar-navigation">

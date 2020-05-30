@@ -31,17 +31,13 @@ export default {
     }
   },
   props: [
-    "selectFoodId"
+    "selectFoodList"
   ],
   methods: {
     
     calcResult(){
       
-      const selectFood = this.foodList.filter(item => {
-        if(item.id == this.selectFoodId[0] || item.id == this.selectFoodId[1]){
-          return true
-        }
-      })
+      const selectFood = this.selectFoodList
 
       const results = this.foodSynergyList.filter(item => { 
         
