@@ -77,8 +77,6 @@ export default {
     text-align: left;
     padding: 8% 0 0% 5%;
     margin:auto;
-  z-index: 2;
-
   }
 }
 
@@ -141,7 +139,6 @@ $section2-bg-color: #FFBB00;
   @include section-bubble-with-colors(a, $section1-bg-color, $section2-bg-color);
   margin-bottom: clamp(0px, 20vw, 20px*7.5);
   height: 100%;
-  z-index: 0;
 }
 
 .main-content{

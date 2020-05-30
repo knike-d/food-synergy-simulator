@@ -6,12 +6,16 @@
           <ul class="luxbar-navigation">
               <li class="luxbar-header">
                   <a href="#" class="luxbar-brand">KNKDEV.com</a>
-                  <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
+                  <!--
+                    <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
                   id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+                  -->
               </li>
+              <!--
               <li class="luxbar-item"><a href="#">アイテム 1</a></li>
               <li class="luxbar-item"><a href="#">アイテム 2</a></li>
               <li class="luxbar-item"><a href="#">アイテム 3</a></li>
+              -->
           </ul>
       </div>
     </header>
