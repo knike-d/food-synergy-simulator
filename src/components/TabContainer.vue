@@ -85,7 +85,7 @@ export default {
 
 .tab-label {
 	color: rgb(0, 0, 0);
-  font-size: clamp(0px, 3.8vw, 3.8px*5);
+  font-size: clamp(1px, 3.8vw, 3.8px*5);
 	cursor: pointer;
 	flex: 1;
 	font-weight: bold;

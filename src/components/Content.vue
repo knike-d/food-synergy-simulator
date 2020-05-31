@@ -68,9 +68,9 @@ export default {
 
   .top-title{
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: clamp(0px, 9vw, 9px*5);
+    font-size: clamp(1px, 9vw, 9px*5);
     font-weight: bold;
-    line-height: clamp(0px, 12vw, 12px*5);
+    line-height: clamp(1px, 12vw, 12px*5);
     color: #1C1C1C;
     height: 100%;
     max-width: 750px;
@@ -122,7 +122,7 @@ $section2-bg-color: #FFBB00;
   {
     content: '';
     position: absolute;
-    //top: clamp(0px, 26vw, 26px*7.5);
+    //top: clamp(1px, 26vw, 26px*7.5);
     bottom: 0;
     
     width: 100%;
@@ -137,7 +137,7 @@ $section2-bg-color: #FFBB00;
 .section-bubble1
 {
   @include section-bubble-with-colors(a, $section1-bg-color, $section2-bg-color);
-  margin-bottom: clamp(0px, 20vw, 20px*7.5);
+  margin-bottom: clamp(1px, 20vw, 20px*7.5);
   height: 100%;
 }
 
@@ -188,11 +188,11 @@ $section2-bg-color: #FFBB00;
 
   .result-btn{
     display: block;
-    font-size: clamp(0px, 3.8vw, 3.8px*5);
+    font-size: clamp(1px, 3.8vw, 3.8px*5);
     font-weight: bold;
     width: 50%;
     margin: auto;
-    padding: clamp(0px, 3vw, 3px*5) clamp(0px, 6vw, 6px*5);
+    padding: clamp(1px, 3vw, 3px*5) clamp(1px, 6vw, 6px*5);
     text-align: center;
     text-decoration: none;
     color: #000;

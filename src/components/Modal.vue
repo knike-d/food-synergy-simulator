@@ -122,8 +122,8 @@ $row-height: 20vw;
           content: '';
           width: 40%;
           height: 40%;
-          border-bottom: solid clamp(0px,1vw,1px*7.5) #FFCF4A;
-          border-left: solid clamp(0px,1vw,1px*7.5) #FFCF4A;
+          border-bottom: solid clamp(1px,1vw,1px*7.5) #FFCF4A;
+          border-left: solid clamp(1px,1vw,1px*7.5) #FFCF4A;
           transform: rotate(45deg);
           position: absolute;
           top: 28%;
@@ -137,7 +137,7 @@ $row-height: 20vw;
         height: 100%;
         background-color: #FFCF4A;
         border-radius:20px;
-        margin: 0 clamp(0px,3vw,3px*7.5) 0 0;
+        margin: 0 clamp(1px,3vw,3px*7.5) 0 0;
         transform:rotate(-45deg);
         cursor: pointer;
         
@@ -173,7 +173,7 @@ $row-height: 20vw;
         width: 90%;
         height: auto;
         gap: 2% 5%;
-        grid-auto-rows: clamp(0px, $row-height, $row-height/1vw*7.5px);
+        grid-auto-rows: clamp(1px, $row-height, $row-height/1vw*7.5px);
         grid-template-columns: 1fr 1fr 1fr;
         margin: 0 auto 20% auto;
         .food-cat{
@@ -190,7 +190,7 @@ $row-height: 20vw;
           }
           .cat-name{
             display: block;
-            font-size: clamp(0px, 3vw, 3px*6);
+            font-size: clamp(1px, 3vw, 3px*6);
             width: 100%;
             height: 19%;
             margin: auto;
