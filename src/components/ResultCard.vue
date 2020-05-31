@@ -159,10 +159,10 @@ $card-inside-radius: 13px;
   display: grid;
   width: 85%;
   height: auto;
-  grid-template-rows: clamp(0px, $row-height, $row-height/1vw*7.5px) clamp(0px, $line-weight, $line-weight/1vw*7.5px) 1fr;
-  grid-template-columns: 1fr clamp(0px, $line-weight, $line-weight/1vw*7.5px) 2fr;
+  grid-template-rows: clamp(1px, $row-height, $row-height/1vw*7.5px) clamp(1px, $line-weight, $line-weight/1vw*7.5px) 1fr;
+  grid-template-columns: 1fr clamp(1px, $line-weight, $line-weight/1vw*7.5px) 2fr;
   margin: 0 auto 4% auto;
-  border: clamp(0px, $line-weight, $line-weight/1vw*7.5px) solid black;
+  border: clamp(1px, $line-weight, $line-weight/1vw*7.5px) solid black;
   border-radius: $card-outside-radius;
 
   .judgment-wrap{
@@ -170,15 +170,15 @@ $card-inside-radius: 13px;
     grid-column: 1;
 
     .judgment-good{
-      width: clamp(0px, $row-height/2, $row-height/2/1vw*7.5px);
-      height: clamp(0px, $row-height/2, $row-height/2/1vw*7.5px);
+      width: clamp(1px, $row-height/2, $row-height/2/1vw*7.5px);
+      height: clamp(1px, $row-height/2, $row-height/2/1vw*7.5px);
       margin: 7% auto 5% auto;
       border-radius: 50%;
-      border: clamp(0px, $judgment-weight, $judgment-weight/1vw*7.5px) solid red;
+      border: clamp(1px, $judgment-weight, $judgment-weight/1vw*7.5px) solid red;
     }
     .judgment-bad{
-      width: clamp(0px, $row-height*2/3, $row-height*2/3/1vw*7.5px);
-      height: clamp(0px, $row-height*2/3, $row-height*2/3/1vw*7.5px);
+      width: clamp(1px, $row-height*2/3, $row-height*2/3/1vw*7.5px);
+      height: clamp(1px, $row-height*2/3, $row-height*2/3/1vw*7.5px);
       margin: 7% auto 3% auto;
       
       .bad-mark{
@@ -205,7 +205,7 @@ $card-inside-radius: 13px;
       }
     }
     .number{
-      font-size: clamp(0px, 3.3vw, 3.3px*6);
+      font-size: clamp(1px, 3.3vw, 3.3px*6);
       font-weight: bold;
       height: 30%;
       white-space: nowrap;
@@ -231,8 +231,8 @@ $card-inside-radius: 13px;
 
       .charaL{
         position: relative;
-        width: clamp(0px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
-        height: clamp(0px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
+        width: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
+        height: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
         border: 2px solid black;
         border-radius: 50%;
         margin: 0 auto 6% auto;
@@ -256,8 +256,8 @@ $card-inside-radius: 13px;
       }
       .charaR{
         position: relative;
-        width: clamp(0px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
-        height: clamp(0px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
+        width: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
+        height: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
         border: 2px solid black;
         border-radius: 50%;
         margin: 0 auto 6% auto;
@@ -280,14 +280,14 @@ $card-inside-radius: 13px;
         }
       }
       .chara-name{
-        font-size: clamp(0px, 2.5vw, 2.5px*6);
+        font-size: clamp(1px, 2.5vw, 2.5px*6);
         font-weight: bold;
         white-space: nowrap;
       }
     }
     .chara-multiply-wrap{
-      width: clamp(0px, $row-height/4, $row-height/4/1vw*7.5px);
-      height: clamp(0px, $row-height/4, $row-height/4/1vw*7.5px);
+      width: clamp(1px, $row-height/4, $row-height/4/1vw*7.5px);
+      height: clamp(1px, $row-height/4, $row-height/4/1vw*7.5px);
       display: inline-block;
       padding: 0 0 15% 0 ;
       
@@ -330,8 +330,8 @@ $card-inside-radius: 13px;
     z-index: -1;
 
     .explanation{
-      font-size: clamp(0px, 3.3vw, 3.3px*6);
-      line-height: clamp(0px, 5.5vw, 5.5px*6);
+      font-size: clamp(1px, 3.3vw, 3.3px*6);
+      line-height: clamp(1px, 5.5vw, 5.5px*6);
       font-weight: bold;
       text-align: left;
       background-color: #FFF;
