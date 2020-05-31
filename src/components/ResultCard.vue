@@ -91,10 +91,7 @@ export default {
         {nutrition: "コレステロール", background: "linear-gradient(180deg, #FFFBDC 0%, #EEDC00 0.01%, #D9A100 98.96%)"},
         {nutrition: "飽和脂肪酸", background: "linear-gradient(180deg, #E7A062 0%, #C99286 100%)"},
         {nutrition: "多価不飽和脂肪酸", background: "linear-gradient(180deg, #FFFCDC 0%, #FFFEED 0.01%, #FFFCCB 98.96%)"},
-        {nutrition: "一価不飽和脂肪酸", background: "linear-gradient(180deg, #FFFCDC 0%, #FFFEED 0.01%, #FFFCCB 98.96%)"},
-        {nutrition: "ビタミンD", background: ""},
-        {nutrition: "ビタミンD", background: ""},
-        
+        {nutrition: "一価不飽和脂肪酸", background: "linear-gradient(180deg, #FFFCDC 0%, #FFFEED 0.01%, #FFFCCB 98.96%)"}
       ]
     }
   },
@@ -112,9 +109,16 @@ export default {
 </script>
 
 <style lang="scss">
-$line-weight: 1vw;
-$row-height: 25vw;
-$judgment-weight: 1.8vw;
+$line-weight: clamp(1px, 0.8vw, 1*7.5px);
+$row-base-h: 23vw;
+$judgment-good-height: clamp(1px, $row-base-h, $row-base-h/1vw*7.5px);
+$grid-row-h: clamp(1px, $row-base-h, $row-base-h/1vw*7.5px);
+$judgment-good-h: clamp(1px, $row-base-h*4.8/10, $row-base-h*4.8/10/1vw*7.5px);
+$judgment-bad-h: clamp(1px, $row-base-h*2/3, $row-base-h*2/3/1vw*7.5px);
+$judgment-bad-h: clamp(1px, $row-base-h*2/3, $row-base-h*2/3/1vw*7.5px);
+$chara-h: clamp(1px, $row-base-h*3/5, $row-base-h*3/5/1vw*7.5px);
+$chara-multiply-h: clamp(1px, $row-base-h/4, $row-base-h/4/1vw*7.5px);
+$judgment-wgt: clamp(1px, 1.8vw, 1.8*7.5px);
 $card-outside-radius: 20px;
 $card-inside-radius: 13px;
 
@@ -159,10 +163,11 @@ $card-inside-radius: 13px;
   display: grid;
   width: 85%;
   height: auto;
-  grid-template-rows: clamp(1px, $row-height, $row-height/1vw*7.5px) clamp(1px, $line-weight, $line-weight/1vw*7.5px) 1fr;
-  grid-template-columns: 1fr clamp(1px, $line-weight, $line-weight/1vw*7.5px) 2fr;
+  grid-template-rows: $grid-row-h $line-weight 1fr;
+  grid-template-columns: 1fr $line-weight 2fr;
   margin: 0 auto 4% auto;
-  border: clamp(1px, $line-weight, $line-weight/1vw*7.5px) solid black;
+  border: solid black;
+  border-width: $line-weight;
   border-radius: $card-outside-radius;
 
   .judgment-wrap{
@@ -170,15 +175,16 @@ $card-inside-radius: 13px;
     grid-column: 1;
 
     .judgment-good{
-      width: clamp(1px, $row-height/2, $row-height/2/1vw*7.5px);
-      height: clamp(1px, $row-height/2, $row-height/2/1vw*7.5px);
+      width: $judgment-good-h;
+      height: $judgment-good-h;
       margin: 7% auto 5% auto;
       border-radius: 50%;
-      border: clamp(1px, $judgment-weight, $judgment-weight/1vw*7.5px) solid red;
+      border: solid red;
+      border-width: $judgment-wgt;
     }
     .judgment-bad{
-      width: clamp(1px, $row-height*2/3, $row-height*2/3/1vw*7.5px);
-      height: clamp(1px, $row-height*2/3, $row-height*2/3/1vw*7.5px);
+      width: $judgment-bad-h;
+      height: $judgment-bad-h;
       margin: 7% auto 3% auto;
       
       .bad-mark{
@@ -205,7 +211,7 @@ $card-inside-radius: 13px;
       }
     }
     .number{
-      font-size: clamp(1px, 3.3vw, 3.3px*6);
+      font-size: clamp(1px, 3.2vw, 3.2px*6);
       font-weight: bold;
       height: 30%;
       white-space: nowrap;
@@ -226,13 +232,13 @@ $card-inside-radius: 13px;
     
     .chara-wrap{
       display: inline-block;
-      margin: 5% auto 0% auto;
+      margin: 4% auto 0% auto;
       width: 44%;
 
       .charaL{
         position: relative;
-        width: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
-        height: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
+        width: $chara-h;
+        height: $chara-h;
         border: 2px solid black;
         border-radius: 50%;
         margin: 0 auto 6% auto;
@@ -256,8 +262,8 @@ $card-inside-radius: 13px;
       }
       .charaR{
         position: relative;
-        width: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
-        height: clamp(1px, $row-height*3/5, $row-height*3/5/1vw*7.5px);
+        width: $chara-h;
+        height: $chara-h;
         border: 2px solid black;
         border-radius: 50%;
         margin: 0 auto 6% auto;
@@ -280,14 +286,14 @@ $card-inside-radius: 13px;
         }
       }
       .chara-name{
-        font-size: clamp(1px, 2.5vw, 2.5px*6);
+        font-size: clamp(1px, 2.9vw, 3px*6);
         font-weight: bold;
         white-space: nowrap;
       }
     }
     .chara-multiply-wrap{
-      width: clamp(1px, $row-height/4, $row-height/4/1vw*7.5px);
-      height: clamp(1px, $row-height/4, $row-height/4/1vw*7.5px);
+      width: $chara-multiply-h;
+      height: $chara-multiply-h;
       display: inline-block;
       padding: 0 0 15% 0 ;
       
