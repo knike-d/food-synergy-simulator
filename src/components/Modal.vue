@@ -1,19 +1,24 @@
 <template>
 <div id="modal">
+  <div id="modal-overlay" @click="closeFoodList" />
   <div id="modal-content">
     <div id="top-bar">
-      <div id="back-btn" v-if="foodListState" @click="backFoodList"></div>
-      <div></div>
-      <div id="close-btn" @click="closeFoodList"></div>
+      <transition>
+        <div id="back-btn" v-if="foodListState" @click="backFoodList"/>
+      </transition>
+      <div/>
+      <div id="close-btn" @click="closeFoodList"/>
     </div>
 
     <div id="content">
-      <ul id="food-list" v-if="foodListState">
-        <li class="food-item" v-for="item in foodList" :key="item.id" @click="returnFoodId(item)">
-          {{ item.name }}
-        </li>
-      </ul>
-      <div id="food-cat-wrap" v-else>
+      <transition>
+        <ul id="food-list" v-if="foodListState">
+          <li class="food-item" v-for="item in foodList" :key="item.id" @click="returnFoodId(item)">
+            {{ item.name }}
+          </li>
+        </ul>
+      </transition>
+      <div id="food-cat-wrap" v-if="!foodListState">
         <div class="food-cat" v-for="item in category" :key="item.name" @click="goFoodList(item)">
           <img class="cat-img" :src="item.imgPath">
           <div class="cat-name">{{item.name}}</div>
@@ -67,7 +72,7 @@ export default {
       this.foodListState = false
     },
     closeFoodList(){
-      this.foodListState = false
+      //this.foodListState = false
       this.$emit("close")
     },
     returnFoodId(item){      
@@ -85,20 +90,33 @@ export default {
 <style lang="scss">
 $icon-height: 10vw;
 $row-height: 20vw;
+@mixin hover($hover-color) {
+  @media (hover: hover) {
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
 
 #modal{
-  z-index:100;
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background-color:rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index:100;
+  #modal-overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
   #modal-content{
-    z-index:1000;
+    position:fixed;
     width:80vw;
     max-width:80px * 7.5;
     padding-top: 2%;
@@ -109,11 +127,11 @@ $row-height: 20vw;
       justify-content: space-between;
       width: 90%;
       height: $icon-height;
-      max-height: $icon-height/1vw * 7.5px;
+      max-height: $icon-height/1vw * 6px;
       margin: 0 auto 4% auto;
       #back-btn{
         width: $icon-height;
-        max-width: $icon-height/1vw * 7.5px;
+        max-width: $icon-height/1vw * 6px;
         height: 100%;
         position: relative;
         display: inline-block;
@@ -140,7 +158,6 @@ $row-height: 20vw;
         margin: 0 clamp(1px,3vw,3px*7.5) 0 0;
         transform:rotate(-45deg);
         cursor: pointer;
-        
         &:before{
           position: absolute;
           content: "";
@@ -166,6 +183,8 @@ $row-height: 20vw;
           border-top: 1px dotted orange;
           border-bottom:1px dotted #FFCF4A;
           cursor: pointer;
+          transition: background-color .3s;
+          @include hover(#e8e8e8);
         }
       }
       #food-cat-wrap{
@@ -181,6 +200,8 @@ $row-height: 20vw;
           height: 100%;
           border: 1px dotted black;
           cursor: pointer;
+          transition: background-color .3s;
+          @include hover(#e8e8e8);
           .cat-img{
             display: block;
             width: 60%;
@@ -199,5 +220,12 @@ $row-height: 20vw;
       }
     }
   }
+}
+
+.v-enter-active, .v-leave-active {
+  transition: opacity .3s;
+}
+.v-enter, .v-leave-to {
+  opacity: 0;
 }
 </style>
