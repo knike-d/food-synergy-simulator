@@ -1,11 +1,13 @@
 <template>
   <div class="food-select-btn-wrap">
-      <div class="food-select-btn" @click="openModal">
-        <div class="plus-mark" v-if="btnState"></div>
-        <img class="btn-img" :src="imgPath" v-else>
-        <p class="btn-text">{{foodName}}</p>
-      </div>
-    <Modal v-show="modalState" @update-btn="updateBtn" @close="closeModal"/>
+    <div v-inview:class="['fade-in-bottom']" class="food-select-btn" @click="openModal">
+      <div class="plus-mark" v-if="btnState"></div>
+      <img class="btn-img" :src="imgPath" v-else>
+      <p class="btn-text">{{foodName}}</p>
+    </div>
+    <transition name="modal">
+      <Modal v-if="modalState" @update-btn="updateBtn" @close="closeModal" />
+    </transition>
   </div>
 </template>
 
@@ -48,16 +50,27 @@ export default {
 </script>
 
 <style lang="scss">
+@mixin hover($hover-color) {
+  @media (hover: hover) {
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
 .food-select-btn-wrap{
   position: relative;
   height: 100%;
   width: 35%;
-  border: 1px dotted black;
   .food-select-btn{
     position: absolute;
     width: 100%;
     height: 100%;
+    background-color: white;
+    border: 1px dotted black;
     cursor: pointer;
+    transition: background-color .3s;
+    @include hover(#efefef);
     .plus-mark{
       position: relative;
       width: 3%;
@@ -96,5 +109,20 @@ export default {
   }
 }
 
+@mixin fade-in-anime($direction) {animation: $direction 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;}
 
+@keyframes fade-in-bottom {
+  0% {transform:translateY(5vw); opacity: 0;}
+  100% {transform:translateY(0); opacity: 1;}
+}
+.fade-in-bottom{
+  @include fade-in-anime(fade-in-bottom);
+}
+
+.modal-enter-active, .modal-leave-active {
+  transition: opacity .5s;
+}
+.modal-enter, .modal-leave-to {
+  opacity: 0;
+}
 </style>

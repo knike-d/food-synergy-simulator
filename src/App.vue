@@ -23,12 +23,12 @@
     <Content/>
 
     <div class="footer">
-      <ul class="footer-ul">
+      <ul>
           <li>
-              <a class="footer-a" href="#inline-privacy">プライバシーポリシー</a>
+              <a href="#inline-privacy">プライバシーポリシー</a>
           </li>
           <li>
-              <a class="footer-a" href="https://forms.gle/Fhc3Z91hsQC5RnPZ9" target="_blank">お問い合わせ</a>
+              <a href="https://forms.gle/Fhc3Z91hsQC5RnPZ9" target="_blank">お問い合わせ</a>
           </li>
       </ul>
           
@@ -53,27 +53,27 @@ export default {
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000;
 }
 
-.footer {
+.footer{
   border-top: 7px solid #e0e0e0;
   padding: 3rem 0 5rem 0;
   margin-top: 2rem;
   color: #000;
   background-color: #FFF;
-}
-
-.footer .footer-ul {
-  list-style: none;
-  padding-inline-start: 0;
-}
-
-.footer .footer-a {
-  color: #000000;
-  text-decoration: none;
+  ul {
+    list-style: none;
+    padding-inline-start: 0;
+    a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
 }
 </style>
