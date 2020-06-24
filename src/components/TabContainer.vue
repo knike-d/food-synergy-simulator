@@ -8,7 +8,8 @@
     </div>
     <input id="TAB-03" type="radio" name="TAB" class="tab-switch" v-bind="radioCheck"/><label class="tab-label" for="TAB-03">食べ合わせ相性</label>
     <div class="tab-content">
-      <ResultCard v-for="(result, index) in results" :key="result.id" v-bind="results[index]"></ResultCard>
+      <ResultCard  v-if="results.length == 0" v-bind="defResult"></ResultCard>
+      <ResultCard  v-for="(result, index) in results" :key="result.id" v-bind="results[index]"></ResultCard>
     </div>
   </div>
 </template>
@@ -27,6 +28,12 @@ export default {
       foodSynergyList: foodSynergyList,
       foodList: foodList,
       results:[],
+      defResult:{
+        id: 0,
+        judgment: -999,
+        nutrition: ["None", "None"],
+        explanation: "表示できる組み合わせはありません。"
+      },
       radioCheck:{}
     }
   },
