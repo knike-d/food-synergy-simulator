@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="result-card">
     <div class="judgment-wrap">
       <div v-if="judgment == -999" class="judgment-none"/>
       <div v-if="judgment == 1" class="judgment-good"/>
@@ -97,6 +97,7 @@ export default {
     }
   },
   created(){
+    console.log("aaaaaaa")
     for(let i=0;i<this.CharaStyleList.length;i++){
       if(this.nutrition[0] == this.CharaStyleList[i].nutrition){
         this.CharaLeftStyle.background = this.CharaStyleList[i].background
@@ -136,27 +137,7 @@ $judgment-wgt: clamp(1px, $row-base-h*0.8/10, $row-base-h*0.8/10/1vw*7.5px);
 $card-outside-radius: 20px;
 $card-inside-radius: 13px;
 
-@mixin chara-bad-mouth() {
-  position: absolute;
-  top: 53%;
-  width: 16%;
-  height: 8%;
-  border-radius: 100px 100px 0 0;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-}
-@mixin chara-good-mouth() {
-  position: absolute;
-  top: 53%;
-  width: 16%;
-  height: 8%;
-  border-radius: 0 0 100px 100px;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-}
-@mixin chara-eye-left() {
+@mixin chara-eye() {
   position: absolute;
   top: 20%;
   width: 10%;
@@ -164,16 +145,15 @@ $card-inside-radius: 13px;
   background: black;
   border-radius: 50%;
 }
-@mixin chara-eye-right() {
+@mixin chara-mouth() {
   position: absolute;
-  top: 20%;
-  width: 10%;
-  height: 25%;
-  background: black;
-  border-radius: 50%;
+  top: 53%;
+  width: 16%;
+  height: 8%;
+  border: 1px solid black;
 }
 
-.card{
+.result-card{
   display: grid;
   width: 85%;
   height: auto;
@@ -255,21 +235,24 @@ $card-inside-radius: 13px;
         border-width: $chara-border-wgt;
         border-radius: 50%;
         margin: 0 auto $chara-bottom-m auto;
-        background: linear-gradient(180deg, #FED3FF 35.94%, #E785FF 100%);
         .charaL-eye-left{
-          @include chara-eye-left();
+          @include chara-eye();
           right: 40%;
         }
         .charaL-eye-right{
-          @include chara-eye-right();
+          @include chara-eye();
           right: 20%;
         }
         .charaL-good-mouth{
-          @include chara-good-mouth();
+          @include chara-mouth();
+          border-radius: 0 0 100px 100px;
+          border-top: 0;
           right: 26%;
         }
         .charaL-bad-mouth{
-          @include chara-bad-mouth();
+          @include chara-mouth();
+          border-radius: 100px 100px 0 0;
+          border-bottom: 0;
           right: 26%;
         }
       }
@@ -281,21 +264,24 @@ $card-inside-radius: 13px;
         border-width: $chara-border-wgt;
         border-radius: 50%;
         margin: 0 auto $chara-bottom-m auto;
-        background: linear-gradient(180deg, #FED3FF 35.94%, #E785FF 100%);
         .charaR-eye-left{
-          @include chara-eye-left();
+          @include chara-eye();
           left: 20%;
         }
         .charaR-eye-right{
-          @include chara-eye-right();
+          @include chara-eye();
           left: 40%;
         }
         .charaR-good-mouth{
-          @include chara-good-mouth();
+          @include chara-mouth();
+          border-radius: 0 0 100px 100px;
+          border-top: 0;
           left: 26%;
         }
         .charaR-bad-mouth{
-          @include chara-bad-mouth();
+          @include chara-mouth();
+          border-radius: 100px 100px 0 0;
+          border-bottom: 0;
           left: 26%;
         }
       }

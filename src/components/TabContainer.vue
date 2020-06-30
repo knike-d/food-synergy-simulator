@@ -2,31 +2,35 @@
   <div class="tab-container">
     <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">食材1</label>
     <div class="tab-content">
+      <NutritionCard  v-if="!Object.keys(selectFoodList[0]).length" v-bind="defFood"/>
+      <NutritionCard  v-else v-for="(food1, index) in selectFoodList[0].nutrition" :key="food1.id" :nutrition="selectFoodList[0].nutrition[index]"/>
     </div>
     <input id="TAB-02" type="radio" name="TAB" class="tab-switch"/><label class="tab-label" for="TAB-02">食材2</label>
     <div class="tab-content">
+      <NutritionCard  v-if="!Object.keys(selectFoodList[1]).length" v-bind="defFood"/>
+      <NutritionCard  v-else v-for="(food2, index) in selectFoodList[1].nutrition" :key="food2.id" :nutrition="selectFoodList[1].nutrition[index]"/>
     </div>
     <input id="TAB-03" type="radio" name="TAB" class="tab-switch" v-bind="radioCheck"/><label class="tab-label" for="TAB-03">食べ合わせ相性</label>
     <div class="tab-content">
-      <ResultCard  v-if="results.length == 0" v-bind="defResult"></ResultCard>
-      <ResultCard  v-for="(result, index) in results" :key="result.id" v-bind="results[index]"></ResultCard>
+      <ResultCard  v-if="results.length == 0" v-bind="defResult"/>
+      <ResultCard  v-else v-for="(result, index) in results" :key="result.id" v-bind="results[index]"/>
     </div>
   </div>
 </template>
 
 <script>
 import ResultCard from './ResultCard.vue'
+import NutritionCard from './NutritionCard.vue'
 import foodSynergyList from '../assets/result.json'
-import foodList from '../assets/food-list.json'
 
 export default {
   components: {
-    ResultCard
+    ResultCard,
+    NutritionCard
   },
   data(){
     return{
       foodSynergyList: foodSynergyList,
-      foodList: foodList,
       results:[],
       defResult:{
         id: 0,
@@ -34,12 +38,17 @@ export default {
         nutrition: ["None", "None"],
         explanation: "表示できる組み合わせはありません。"
       },
+      defFood:{
+        nutrition: "主な栄養なし"
+      },
       radioCheck:{}
     }
   },
-  props: [
-    "selectFoodList"
-  ],
+  props: {
+    selectFoodList: {
+      type: Array
+    }
+  },
   methods: {
     calcResult(){
       const selectFood = this.selectFoodList
