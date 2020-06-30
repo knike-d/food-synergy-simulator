@@ -1,39 +1,40 @@
 <template>
-  <div class="card">
+  <div class="result-card">
     <div class="judgment-wrap">
-      <div v-if="judgment == 1" class="judgment-good"></div>
+      <div v-if="judgment == -999" class="judgment-none"/>
+      <div v-if="judgment == 1" class="judgment-good"/>
       <div v-else-if="judgment == -1" class="judgment-bad">
-          <div class="bad-mark"></div>
+          <div class="bad-mark"/>
       </div>
       <div class="number">相性図鑑No.{{ id }}</div>
     </div>
-    <div class="section-column-line"></div>
+    <div class="section-column-line"/>
     
     <div class="chara-container">
       <div class="chara-wrap">
         <div class="charaL" :style="CharaLeftStyle">
-          <div class="charaL-eye-left"></div>
-          <div class="charaL-eye-right"></div>
-          <div :class="[judgment == 1 ? 'charaL-good-mouth' : 'charaL-bad-mouth']"></div>
+          <div class="charaL-eye-left"/>
+          <div class="charaL-eye-right"/>
+          <div :class="[judgment == 1 ? 'charaL-good-mouth' : 'charaL-bad-mouth']"/>
         </div>
         <div class="chara-name">{{ nutrition[0] }}</div>
       </div>
 
       <div class="chara-multiply-wrap">
-        <div class="chara-multiply"></div>
+        <div class="chara-multiply"/>
       </div>
 
       <div class="chara-wrap">
         <div class="charaR" :style="CharaRightStyle">
-          <div class="charaR-eye-left"></div>
-          <div class="charaR-eye-right"></div>
-          <div :class="[judgment == 1 ? 'charaR-good-mouth' : 'charaR-bad-mouth']"></div>
+          <div class="charaR-eye-left"/>
+          <div class="charaR-eye-right"/>
+          <div :class="[judgment == 1 ? 'charaR-good-mouth' : 'charaR-bad-mouth']"/>
         </div>
         <div class="chara-name">{{ nutrition[1] }}</div>
       </div>
     </div>
 
-    <div class="section-row-line"></div>
+    <div class="section-row-line"/>
     <div class="explanation-wrap">
       <div class="explanation">
         {{ explanation }}
@@ -96,6 +97,7 @@ export default {
     }
   },
   created(){
+    console.log("aaaaaaa")
     for(let i=0;i<this.CharaStyleList.length;i++){
       if(this.nutrition[0] == this.CharaStyleList[i].nutrition){
         this.CharaLeftStyle.background = this.CharaStyleList[i].background
@@ -111,38 +113,31 @@ export default {
 <style lang="scss">
 $line-weight: clamp(1px, 0.8vw, 1*7.5px);
 $row-base-h: 23vw;
-$judgment-good-height: clamp(1px, $row-base-h, $row-base-h/1vw*7.5px);
 $grid-row-h: clamp(1px, $row-base-h, $row-base-h/1vw*7.5px);
+$card-font1: clamp(1px, $row-base-h*1.3/10, $row-base-h*1.3/10/1vw*6px);
+
+$judgment-none-h: clamp(1px, $row-base-h*0.7/10, $row-base-h*0.7/10/1vw*7.5px);
+$judgment-none-top-m: clamp(1px, $row-base-h*4.3/10, $row-base-h*4.3/10/1vw*7.5px);
+$judgment-none-bottom-m: clamp(1px, $row-base-h*3.1/10, $row-base-h*3.1/10/1vw*7.5px);
+
 $judgment-good-h: clamp(1px, $row-base-h*4.8/10, $row-base-h*4.8/10/1vw*7.5px);
-$judgment-bad-h: clamp(1px, $row-base-h*2/3, $row-base-h*2/3/1vw*7.5px);
-$judgment-bad-h: clamp(1px, $row-base-h*2/3, $row-base-h*2/3/1vw*7.5px);
-$chara-h: clamp(1px, $row-base-h*3/5, $row-base-h*3/5/1vw*7.5px);
+$judgment-good-top-m: clamp(1px, $row-base-h*1/10, $row-base-h*1/10/1vw*7.5px);
+$judgment-good-bottom-m: clamp(1px, $row-base-h*0.7/10, $row-base-h*0.7/10/1vw*7.5px);
+
+$judgment-bad-h: clamp(1px, $row-base-h*6.6/10, $row-base-h*6.6/10/1vw*7.5px);
+$judgment-bad-top-m: clamp(1px, $row-base-h*1/10, $row-base-h*1/10/1vw*7.5px);
+$judgment-bad-bottom-m: clamp(1px, $row-base-h*0.5/10, $row-base-h*0.5/10/1vw*7.5px);
+
+$chara-h: clamp(1px, $row-base-h*5.5/10, $row-base-h*5.5/10/1vw*7.5px);
+$chara-top-m: clamp(1px, $row-base-h*1.5/10, $row-base-h*1.5/10/1vw*7.5px);
+$chara-bottom-m: clamp(1px, $row-base-h*0.7/10, $row-base-h*0.7/10/1vw*7.5px);
+$chara-border-wgt: clamp(1px, $row-base-h*0.2/10, $row-base-h*0.2/10/1vw*7.5px);
 $chara-multiply-h: clamp(1px, $row-base-h/4, $row-base-h/4/1vw*7.5px);
-$judgment-wgt: clamp(1px, 1.8vw, 1.8*7.5px);
+$judgment-wgt: clamp(1px, $row-base-h*0.8/10, $row-base-h*0.8/10/1vw*7.5px);
 $card-outside-radius: 20px;
 $card-inside-radius: 13px;
 
-@mixin chara-bad-mouth() {
-  position: absolute;
-  top: 53%;
-  width: 16%;
-  height: 8%;
-  border-radius: 100px 100px 0 0;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-}
-@mixin chara-good-mouth() {
-  position: absolute;
-  top: 53%;
-  width: 16%;
-  height: 8%;
-  border-radius: 0 0 100px 100px;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-}
-@mixin chara-eye-left() {
+@mixin chara-eye() {
   position: absolute;
   top: 20%;
   width: 10%;
@@ -150,16 +145,15 @@ $card-inside-radius: 13px;
   background: black;
   border-radius: 50%;
 }
-@mixin chara-eye-right() {
+@mixin chara-mouth() {
   position: absolute;
-  top: 20%;
-  width: 10%;
-  height: 25%;
-  background: black;
-  border-radius: 50%;
+  top: 53%;
+  width: 16%;
+  height: 8%;
+  border: 1px solid black;
 }
 
-.card{
+.result-card{
   display: grid;
   width: 85%;
   height: auto;
@@ -169,15 +163,19 @@ $card-inside-radius: 13px;
   border: solid black;
   border-width: $line-weight;
   border-radius: $card-outside-radius;
-
   .judgment-wrap{
     grid-row: 1;
     grid-column: 1;
-
+    .judgment-none{
+      width: 30%;
+      height: $judgment-none-h;
+      margin: $judgment-none-top-m auto $judgment-none-bottom-m auto;
+      background: black;
+    }
     .judgment-good{
       width: $judgment-good-h;
       height: $judgment-good-h;
-      margin: 7% auto 5% auto;
+      margin: $judgment-good-top-m auto $judgment-good-bottom-m auto;
       border-radius: 50%;
       border: solid red;
       border-width: $judgment-wgt;
@@ -185,14 +183,12 @@ $card-inside-radius: 13px;
     .judgment-bad{
       width: $judgment-bad-h;
       height: $judgment-bad-h;
-      margin: 7% auto 3% auto;
-      
+      margin: $judgment-bad-top-m auto $judgment-bad-bottom-m auto;
       .bad-mark{
         height:100%;
         width:100%;
         display:block;
         position:relative;
-
         &:before, &:after{
           content:'';
           height:15%;
@@ -211,13 +207,11 @@ $card-inside-radius: 13px;
       }
     }
     .number{
-      font-size: clamp(1px, 3.2vw, 3.2px*6);
+      font-size: $card-font1;
       font-weight: bold;
-      height: 30%;
       white-space: nowrap;
     }
   }
-
   .section-column-line{
     grid-row: 1;
     grid-column: 2;
@@ -229,34 +223,36 @@ $card-inside-radius: 13px;
   .chara-container{
     grid-row: 1;
     grid-column: 3;
-    
     .chara-wrap{
       display: inline-block;
-      margin: 4% auto 0% auto;
+      margin: $chara-top-m auto 0 auto;
       width: 44%;
-
       .charaL{
         position: relative;
         width: $chara-h;
         height: $chara-h;
-        border: 2px solid black;
+        border: solid black;
+        border-width: $chara-border-wgt;
         border-radius: 50%;
-        margin: 0 auto 6% auto;
-        background: linear-gradient(180deg, #FED3FF 35.94%, #E785FF 100%);
+        margin: 0 auto $chara-bottom-m auto;
         .charaL-eye-left{
-          @include chara-eye-left();
+          @include chara-eye();
           right: 40%;
         }
         .charaL-eye-right{
-          @include chara-eye-right();
+          @include chara-eye();
           right: 20%;
         }
         .charaL-good-mouth{
-          @include chara-good-mouth();
+          @include chara-mouth();
+          border-radius: 0 0 100px 100px;
+          border-top: 0;
           right: 26%;
         }
         .charaL-bad-mouth{
-          @include chara-bad-mouth();
+          @include chara-mouth();
+          border-radius: 100px 100px 0 0;
+          border-bottom: 0;
           right: 26%;
         }
       }
@@ -264,29 +260,33 @@ $card-inside-radius: 13px;
         position: relative;
         width: $chara-h;
         height: $chara-h;
-        border: 2px solid black;
+        border: solid black;
+        border-width: $chara-border-wgt;
         border-radius: 50%;
-        margin: 0 auto 6% auto;
-        background: linear-gradient(180deg, #FED3FF 35.94%, #E785FF 100%);
+        margin: 0 auto $chara-bottom-m auto;
         .charaR-eye-left{
-          @include chara-eye-left();
+          @include chara-eye();
           left: 20%;
         }
         .charaR-eye-right{
-          @include chara-eye-right();
+          @include chara-eye();
           left: 40%;
         }
         .charaR-good-mouth{
-          @include chara-good-mouth();
+          @include chara-mouth();
+          border-radius: 0 0 100px 100px;
+          border-top: 0;
           left: 26%;
         }
         .charaR-bad-mouth{
-          @include chara-bad-mouth();
+          @include chara-mouth();
+          border-radius: 100px 100px 0 0;
+          border-bottom: 0;
           left: 26%;
         }
       }
       .chara-name{
-        font-size: clamp(1px, 2.9vw, 3px*6);
+        font-size: $card-font1;
         font-weight: bold;
         white-space: nowrap;
       }
@@ -295,14 +295,12 @@ $card-inside-radius: 13px;
       width: $chara-multiply-h;
       height: $chara-multiply-h;
       display: inline-block;
-      padding: 0 0 15% 0 ;
-      
+      padding: 0 0 14% 0 ;
       .chara-multiply{
         height:100%;
         width:100%;
         display:block;
         position:relative;
-
         &:before, &:after{
           content:'';
           height:15%;
@@ -334,7 +332,6 @@ $card-inside-radius: 13px;
     background-color: #FFCF4A;
     border-radius: 0 0 $card-inside-radius $card-inside-radius;
     z-index: -1;
-
     .explanation{
       font-size: clamp(1px, 3.3vw, 3.3px*6);
       line-height: clamp(1px, 5.5vw, 5.5px*6);
@@ -348,5 +345,4 @@ $card-inside-radius: 13px;
     }
   }
 }
-
 </style>

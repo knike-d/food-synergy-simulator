@@ -1,5 +1,7 @@
 # food-synergy-simulator
 
+## 6/20に新たに追加 npm install --save vueinview
+
 ## Project setup
 ```
 npm install
