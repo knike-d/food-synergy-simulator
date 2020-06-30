@@ -97,7 +97,6 @@ export default {
     }
   },
   created(){
-    console.log("aaaaaaa")
     for(let i=0;i<this.CharaStyleList.length;i++){
       if(this.nutrition[0] == this.CharaStyleList[i].nutrition){
         this.CharaLeftStyle.background = this.CharaStyleList[i].background
