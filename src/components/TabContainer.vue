@@ -2,12 +2,12 @@
   <div class="tab-container">
     <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">食材1</label>
     <div class="tab-content">
-      <NutritionCard  v-if="!Object.keys(selectFoodList[0]).length" v-bind="defFood"/>
+      <NutritionCard  v-if="!Object.keys(selectFood[0].nutrition).length" v-bind="defFood"/>
       <NutritionCard  v-else v-for="(food1, index) in selectFoodList[0].nutrition" :key="food1.id" :nutrition="selectFoodList[0].nutrition[index]"/>
     </div>
     <input id="TAB-02" type="radio" name="TAB" class="tab-switch"/><label class="tab-label" for="TAB-02">食材2</label>
     <div class="tab-content">
-      <NutritionCard  v-if="!Object.keys(selectFoodList[1]).length" v-bind="defFood"/>
+      <NutritionCard  v-if="!Object.keys(selectFood[1].nutrition).length" v-bind="defFood"/>
       <NutritionCard  v-else v-for="(food2, index) in selectFoodList[1].nutrition" :key="food2.id" :nutrition="selectFoodList[1].nutrition[index]"/>
     </div>
     <input id="TAB-03" type="radio" name="TAB" class="tab-switch" v-bind="radioCheck"/><label class="tab-label" for="TAB-03">食べ合わせ相性</label>
@@ -31,6 +31,20 @@ export default {
   data(){
     return{
       foodSynergyList: foodSynergyList,
+      selectFood:[
+        {
+          "category": "なし",
+          "id": 0,
+          "name": "なし",
+          "nutrition": []
+        },
+        {
+          "category": "なし",
+          "id": 0,
+          "name": "なし",
+          "nutrition": []
+        }
+      ],
       results:[],
       defResult:{
         id: 0,
@@ -51,12 +65,12 @@ export default {
   },
   methods: {
     calcResult(){
-      const selectFood = this.selectFoodList
-      const results = this.foodSynergyList.filter(item => { 
+      this.selectFood.splice(0,2,this.selectFoodList[0],this.selectFoodList[1])
+      const selectFood = this.selectFood
+      const results = this.foodSynergyList.filter(item => {
         for(let i=0; i<selectFood[0].nutrition.length; i++){
           for(let j=0; j<selectFood[1].nutrition.length; j++){
-            let comparisonList
-            comparisonList = [].concat(selectFood[0].nutrition[i], selectFood[1].nutrition[j])
+            const comparisonList = [].concat(selectFood[0].nutrition[i], selectFood[1].nutrition[j])
             if(item.nutrition.sort().toString() == comparisonList.sort().toString()) return true
           }
         }
