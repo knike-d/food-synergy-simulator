@@ -25,10 +25,10 @@
     <div class="footer">
       <ul>
           <li>
-              <a href="#inline-privacy">プライバシーポリシー</a>
+              <a>プライバシーポリシー</a>
           </li>
           <li>
-              <a href="https://forms.gle/Fhc3Z91hsQC5RnPZ9" target="_blank">お問い合わせ</a>
+              <a>お問い合わせ</a>
           </li>
       </ul>
           

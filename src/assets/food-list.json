@@ -18908,4 +18908,165 @@
   "nutrition": [
     "ナトリウム"
   ]
-}]
+},
+{
+  "category": "サプリメント",
+  "id": 1602,
+  "name": "カルシウム",
+  "nutrition": [
+    "カルシウム"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1603,
+  "name": "マグネシウム",
+  "nutrition": [
+    "マグネシウム"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1604,
+  "name": "鉄",
+  "nutrition": [
+    "鉄"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1605,
+  "name": "亜鉛",
+  "nutrition": [
+    "亜鉛"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1606,
+  "name": "マンガン",
+  "nutrition": [
+    "マンガン"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1607,
+  "name": "銅",
+  "nutrition": [
+    "銅"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1608,
+  "name": "ナトリウム",
+  "nutrition": [
+    "ナトリウム"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1609,
+  "name": "クロム",
+  "nutrition": [
+    "クロム"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1610,
+  "name": "モリブデン",
+  "nutrition": [
+    "モリブデン"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1611,
+  "name": "カリウム",
+  "nutrition": [
+    "カリウム"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1612,
+  "name": "ヨウ素",
+  "nutrition": [
+    "ヨウ素"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1613,
+  "name": "リン",
+  "nutrition": [
+    "リン"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1614,
+  "name": "セレン",
+  "nutrition": [
+    "セレン"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1615,
+  "name": "ビタミンA",
+  "nutrition": [
+    "ビタミンA"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1616,
+  "name": "ビタミンD",
+  "nutrition": [
+    "ビタミンD"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1617,
+  "name": "ビタミンE",
+  "nutrition": [
+    "ビタミンE"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1618,
+  "name": "ビタミンK",
+  "nutrition": [
+    "ビタミンK"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1619,
+  "name": "ビタミンC",
+  "nutrition": [
+    "ビタミンC"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1620,
+  "name": "多価不飽和脂肪酸",
+  "nutrition": [
+    "多価不飽和脂肪酸"
+  ]
+},
+{
+  "category": "サプリメント",
+  "id": 1621,
+  "name": "一価不飽和脂肪酸",
+  "nutrition": [
+    "一価不飽和脂肪酸"
+  ]
+}
+]
