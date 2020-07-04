@@ -38,6 +38,7 @@ export default {
       foodListState: false,
       foodList: [],
       category:[
+        {name:"サプリメント", imgPath:require('../assets/foodicons/19.png')},
         {name:"穀類", imgPath:require('../assets/foodicons/01.png')},
         {name:"いも・でん粉類", imgPath:require('../assets/foodicons/02.png')},
         {name:"砂糖・甘味類", imgPath:require('../assets/foodicons/03.png')},
@@ -72,7 +73,6 @@ export default {
       this.foodListState = false
     },
     closeFoodList(){
-      //this.foodListState = false
       this.$emit("close")
     },
     returnFoodId(item){      
@@ -118,7 +118,7 @@ $row-height: 20vw;
   #modal-content{
     position:fixed;
     width:80vw;
-    max-width:80px * 7.5;
+    max-width:70px * 7.5;
     padding-top: 2%;
     padding-bottom: 5%;
     background-color: white;
@@ -179,6 +179,7 @@ $row-height: 20vw;
         .food-item{
           list-style: none;
           text-align: left;
+          font-size: clamp(1px, 3vw, 3px*5.5);
           padding: 2% 3%;
           border-top: 1px dotted orange;
           border-bottom:1px dotted #FFCF4A;
