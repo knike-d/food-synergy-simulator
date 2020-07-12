@@ -1,20 +1,29 @@
 <template>
   <div class="tab-container">
-    <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">食材1</label>
-    <div class="tab-content">
-      <NutritionCard  v-if="!Object.keys(selectFood[0].nutrition).length" v-bind="defFood"/>
-      <NutritionCard  v-else v-for="(food1, index) in selectFoodList[0].nutrition" :key="food1.id" :nutrition="selectFoodList[0].nutrition[index]"/>
-    </div>
-    <input id="TAB-02" type="radio" name="TAB" class="tab-switch"/><label class="tab-label" for="TAB-02">食材2</label>
-    <div class="tab-content">
-      <NutritionCard  v-if="!Object.keys(selectFood[1].nutrition).length" v-bind="defFood"/>
-      <NutritionCard  v-else v-for="(food2, index) in selectFoodList[1].nutrition" :key="food2.id" :nutrition="selectFoodList[1].nutrition[index]"/>
-    </div>
-    <input id="TAB-03" type="radio" name="TAB" class="tab-switch" v-bind="radioCheck"/><label class="tab-label" for="TAB-03">食べ合わせ相性</label>
-    <div class="tab-content">
-      <ResultCard  v-if="results.length == 0" v-bind="defResult"/>
-      <ResultCard  v-else v-for="(result, index) in results" :key="result.id" v-bind="results[index]"/>
-    </div>
+    <input id="tab1" type="radio" value="1" name="tab" class="tab-switch" v-model="isActive"/>
+    <label class="tab-label" for="tab1">食材1</label>
+    <transition name="tab1">
+      <div class="tab-content" v-if="isActive === '1'">
+        <NutritionCard  v-if="!Object.keys(selectFood[0].nutrition).length" v-bind="defFood"/>
+        <NutritionCard  v-else v-for="(food1, index) in selectFoodList[0].nutrition" :key="food1.id" :nutrition="selectFoodList[0].nutrition[index]"/>
+      </div>
+    </transition>
+    <input id="tab2" type="radio" value="2" name="tab" class="tab-switch" v-model="isActive"/>
+    <label class="tab-label" for="tab2">食材2</label>
+    <transition :name="tab2">
+      <div class="tab-content" v-if="isActive === '2'">
+        <NutritionCard  v-if="!Object.keys(selectFood[1].nutrition).length" v-bind="defFood"/>
+        <NutritionCard  v-else v-for="(food2, index) in selectFoodList[1].nutrition" :key="food2.id" :nutrition="selectFoodList[1].nutrition[index]"/>
+      </div>
+    </transition>
+    <input id="tab3" type="radio" value="3" name="tab" class="tab-switch" v-model="isActive"/>
+    <label class="tab-label" for="tab3">食べ合わせ相性</label>
+    <transition name="tab3">
+      <div class="tab-content" v-if="isActive === '3'">
+        <ResultCard  v-if="results.length == 0" v-bind="defResult"/>
+        <ResultCard  v-else v-for="(result, index) in results" :key="result.id" v-bind="results[index]"/>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -30,7 +39,11 @@ export default {
   },
   data(){
     return{
+      isActive: "1",
+      beforeActive: 1,
+      tab2: "",
       foodSynergyList: foodSynergyList,
+      results:[],
       selectFood:[
         {
           "category": "なし",
@@ -45,7 +58,6 @@ export default {
           "nutrition": []
         }
       ],
-      results:[],
       defResult:{
         id: 0,
         judgment: -999,
@@ -54,8 +66,7 @@ export default {
       },
       defFood:{
         nutrition: "主な栄養なし"
-      },
-      radioCheck:{}
+      }
     }
   },
   props: {
@@ -79,7 +90,19 @@ export default {
       this.changeTab()
     },
     changeTab(){
-      this.radioCheck.checked = "checked"
+      this.isActive = "3"
+    }
+  },
+  watch: {
+    isActive(){
+      if(this.isActive == "2"){
+        if(this.beforeActive < Number(this.isActive)){
+          this.tab2 = "tab2_1"
+        }else if(this.beforeActive > Number(this.isActive)){
+          this.tab2 = "tab2_2"
+        }
+      }
+      this.beforeActive = Number(this.isActive)
     }
   }
 }
@@ -87,40 +110,37 @@ export default {
 
 <style lang="scss">
 .tab-container {
-  margin: 5% 0 5% 0;
-	background: White;
 	display: flex;
 	flex-wrap: wrap;
-	overflow: hidden;
+  margin: 5% 0 5% 0;
 	padding: 0 0 5% 0;
+	background: White;
+	overflow: hidden;
   &:after {
     content: '';
+    width: 100%;
     padding: 0 0 5% 0;
     order: -1;
-    width: 100%;
   }
   .tab-content {
-    height:0;
-    opacity:0;
-    pointer-events:none;
-    transform: translateX(-30%);
-    transition: transform .3s 80ms, opacity .3s 80ms;
+    height: 0;
     width: 100%;
+    transition: transform .3s 80ms, opacity .3s 80ms;
+    pointer-events:none;
   }
   .tab-label {
-    color: rgb(0, 0, 0);
-    font-size: clamp(1px, 3.8vw, 3.8px*5);
-    cursor: pointer;
-    flex: 1;
-    font-weight: bold;
-    order: -1;
-    padding: 2.5% 5%;
     position: relative;
+    font-size: clamp(1px, 3.8vw, 3.8px*5);
+    font-weight: bold;
     text-align: center;
-    transition: cubic-bezier(0.4, 0, 0.2, 1) .2s;
+    padding: 2.5% 5%;
+    flex: 1;
+    order: -1;
+    color: black;
+    transition: cubic-bezier(0.4, 0, 0.2, 1) .2s, background-color .3s;
     user-select: none;
     white-space: nowrap;
-    transition: background-color .3s;
+    cursor: pointer;
     &:active{
       background-color:#efefef;
     }
@@ -131,18 +151,17 @@ export default {
     }
     &:after {
       content: '';
-      background-color: #FFCF4A;
-      bottom: 0;
-      display: block;
-      height: 2px;
-      left: 0;
-      opacity: 0;
-      pointer-events: none;
       position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #FFCF4A;
+      opacity: 0;
       transform: translateX(100%);
       transition: cubic-bezier(0.4, 0, 0.2, 1) .2s 80ms;
-      width: 100%;
       z-index: 1;
+      pointer-events: none;
     }
   }
   .tab-switch {
@@ -157,15 +176,34 @@ export default {
       }
       & + .tab-label + .tab-content {
         height: auto;
-        opacity: 1;
         order: 1;
-        pointer-events:auto;
-        transform: translateX(0);
-      }
-      & ~ .tab-content {
-        transform: translateX(30%);
       }
     }
   }
+}
+
+.tab1-enter, .tab1-leave-to{
+  transform: translateX(-30%);
+  opacity: 0;
+}
+.tab2_1-enter {
+  transform: translateX(30%);
+  opacity: 0;
+}
+.tab2_1-leave-to {
+  transform: translateX(-30%);
+  opacity: 0;
+}
+.tab2_2-enter {
+  transform: translateX(-30%);
+  opacity: 0;
+}
+.tab2_2-leave-to {
+  transform: translateX(30%);
+  opacity: 0;
+}
+.tab3-enter, .tab3-leave-to {
+  transform: translateX(30%);
+  opacity: 0;
 }
 </style>
