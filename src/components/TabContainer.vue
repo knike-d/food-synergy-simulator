@@ -62,7 +62,7 @@ export default {
       defResult:{
         id: 0,
         judgment: -999,
-        nutrition: ["None", "None"],
+        nutrition: ["なし", "なし"],
         explanation: "表示できる組み合わせはありません。"
       },
       defFood:{
