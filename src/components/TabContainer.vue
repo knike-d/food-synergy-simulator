@@ -1,7 +1,7 @@
 <template>
   <div class="tab-container">
     <input id="tab1" type="radio" value="1" name="tab" class="tab-switch" v-model="isActive"/>
-    <label class="tab-label" for="tab1">食材1</label>
+    <label class="tab-label" for="tab1">左の食材</label>
     <transition name="tab1">
       <div class="tab-content" v-if="isActive === '1'">
         <NutritionCard  v-if="!Object.keys(selectFood[0].nutrition).length" v-bind="defFood"/>
@@ -9,8 +9,8 @@
       </div>
     </transition>
     <input id="tab2" type="radio" value="2" name="tab" class="tab-switch" v-model="isActive"/>
-    <label class="tab-label" for="tab2">食材2</label>
-    <transition :name="tab2">
+    <label class="tab-label" for="tab2">右の食材</label>
+    <transition name="tab2" :enter-class="tab2Enter" :leave-to-class="tab2LeaveTo">
       <div class="tab-content" v-if="isActive === '2'">
         <NutritionCard  v-if="!Object.keys(selectFood[1].nutrition).length" v-bind="defFood"/>
         <NutritionCard  v-else v-for="(food2, index) in selectFoodList[1].nutrition" :key="food2.id" :nutrition="selectFoodList[1].nutrition[index]"/>
@@ -41,7 +41,8 @@ export default {
     return{
       isActive: "1",
       beforeActive: 1,
-      tab2: "",
+      tab2Enter: "",
+      tab2LeaveTo: "tab2-fade-out-L",
       foodSynergyList: foodSynergyList,
       results:[],
       selectFood:[
@@ -61,7 +62,7 @@ export default {
       defResult:{
         id: 0,
         judgment: -999,
-        nutrition: ["None", "None"],
+        nutrition: ["なし", "なし"],
         explanation: "表示できる組み合わせはありません。"
       },
       defFood:{
@@ -96,10 +97,17 @@ export default {
   watch: {
     isActive(){
       if(this.isActive == "2"){
-        if(this.beforeActive < Number(this.isActive)){
-          this.tab2 = "tab2_1"
-        }else if(this.beforeActive > Number(this.isActive)){
-          this.tab2 = "tab2_2"
+        if(this.beforeActive < 2){
+          this.tab2Enter = "tab2-fade-out-R"
+        }else if(this.beforeActive > 2){
+          this.tab2Enter = "tab2-fade-out-L"
+        }
+      }
+      if(this.beforeActive == 2){
+        if(2 < Number(this.isActive)){
+          this.tab2LeaveTo = "tab2-fade-out-L"
+        }else if(2 > Number(this.isActive)){
+          this.tab2LeaveTo = "tab2-fade-out-R"
         }
       }
       this.beforeActive = Number(this.isActive)
@@ -182,27 +190,11 @@ export default {
   }
 }
 
-.tab1-enter, .tab1-leave-to{
+.tab1-enter, .tab1-leave-to, .tab2-fade-out-L{
   transform: translateX(-30%);
   opacity: 0;
 }
-.tab2_1-enter {
-  transform: translateX(30%);
-  opacity: 0;
-}
-.tab2_1-leave-to {
-  transform: translateX(-30%);
-  opacity: 0;
-}
-.tab2_2-enter {
-  transform: translateX(-30%);
-  opacity: 0;
-}
-.tab2_2-leave-to {
-  transform: translateX(30%);
-  opacity: 0;
-}
-.tab3-enter, .tab3-leave-to {
+.tab3-enter, .tab3-leave-to, .tab2-fade-out-R {
   transform: translateX(30%);
   opacity: 0;
 }
