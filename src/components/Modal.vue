@@ -88,16 +88,6 @@ export default {
 </script>
 
 <style lang="scss">
-$icon-height: 10vw;
-$row-height: 20vw;
-@mixin hover($hover-color) {
-  @media (hover: hover) {
-    &:hover {
-      background-color: $hover-color;
-    }
-  }
-}
-
 #modal{
   position:fixed;
   top:0;
@@ -119,41 +109,41 @@ $row-height: 20vw;
     position:fixed;
     width:80vw;
     max-width:70px * 7.5;
-    padding-top: 2%;
+    padding-top: 1%;
     padding-bottom: 5%;
     background-color: white;
     #top-bar{
       display: flex;
       justify-content: space-between;
       width: 90%;
-      height: $icon-height;
-      max-height: $icon-height/1vw * 6px;
-      margin: 0 auto 4% auto;
+      height: $modal-top-bar-h;
+      max-height: $modal-top-bar-h/1vw * 6px;
+      margin: 0 auto 2% auto;
       #back-btn{
-        width: $icon-height;
-        max-width: $icon-height/1vw * 6px;
+        width: $modal-top-bar-h;
+        max-width: $modal-top-bar-h/1vw * 6px;
         height: 100%;
         position: relative;
         display: inline-block;
         cursor: pointer;
         &::before{
           content: '';
-          width: 40%;
-          height: 40%;
-          border-bottom: solid clamp(1px,1vw,1px*7.5) #FFCF4A;
-          border-left: solid clamp(1px,1vw,1px*7.5) #FFCF4A;
+          width: 45%;
+          height: 45%;
+          border: solid $main-color;
+          border-width: 0 0 clamp(1px,1vw,1px*7.5) clamp(1px,1vw,1px*7.5);
           transform: rotate(45deg);
           position: absolute;
-          top: 28%;
+          top: 24%;
           left: 10%;
         }
       }
       #close-btn{
         position: relative;
-        width: $icon-height/10;
-        max-width: $icon-height/10vw * 7.5px;
+        width: $modal-top-bar-h/10;
+        max-width: $modal-top-bar-h/10vw * 7.5px;
         height: 100%;
-        background-color: #FFCF4A;
+        background-color: $main-color;
         border-radius:20px;
         margin: 0 clamp(1px,3vw,3px*7.5) 0 0;
         transform:rotate(-45deg);
@@ -161,7 +151,7 @@ $row-height: 20vw;
         &:before{
           position: absolute;
           content: "";
-          background-color: #FFCF4A;
+          background-color: $main-color;
           border-radius:20px;
           top: 0;
           left: 0;
@@ -179,13 +169,13 @@ $row-height: 20vw;
         .food-item{
           list-style: none;
           text-align: left;
-          font-size: clamp(1px, 3vw, 3px*5.5);
+          font-size: clamp(1px, 3vw, 3px*6);
           padding: 2% 3%;
-          border-top: 1px dotted orange;
-          border-bottom:1px dotted #FFCF4A;
+          border-top: 1px dotted $accent-color;
+          border-bottom:1px dotted $main-color;
           cursor: pointer;
           transition: background-color .3s;
-          @include hover(#e8e8e8);
+          @include hover($hover-color);
         }
       }
       #food-cat-wrap{
@@ -193,7 +183,7 @@ $row-height: 20vw;
         width: 90%;
         height: auto;
         gap: 2% 5%;
-        grid-auto-rows: clamp(1px, $row-height, $row-height/1vw*7.5px);
+        grid-auto-rows: clamp(1px, $cat-row-h, $cat-row-h/1vw*7.5px);
         grid-template-columns: 1fr 1fr 1fr;
         margin: 0 auto 20% auto;
         .food-cat{
@@ -202,7 +192,7 @@ $row-height: 20vw;
           border: 1px dotted black;
           cursor: pointer;
           transition: background-color .3s;
-          @include hover(#e8e8e8);
+          @include hover($hover-color);
           .cat-img{
             display: block;
             width: 60%;

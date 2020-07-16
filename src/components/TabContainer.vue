@@ -150,13 +150,9 @@ export default {
     white-space: nowrap;
     cursor: pointer;
     &:active{
-      background-color:#efefef;
+      background-color:$hover-color;
     }
-    @media (hover: hover) {
-      &:hover {
-        background-color:#efefef;
-      }
-    }
+    @include hover($hover-color);
     &:after {
       content: '';
       position: absolute;
@@ -164,7 +160,7 @@ export default {
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: #FFCF4A;
+      background-color: $main-color;
       opacity: 0;
       transform: translateX(100%);
       transition: cubic-bezier(0.4, 0, 0.2, 1) .2s 80ms;

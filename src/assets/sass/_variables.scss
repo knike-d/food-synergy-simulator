@@ -1,0 +1,49 @@
+$main-color: #ffcf4a;
+$accent-color: #ffbb00;
+$hover-color: #efefef;
+$cross-color: #4b4b4b;
+
+/* Content.vue */
+$top-bg-h: clamp(1px, 20vw, 320px);
+$top-title-posx: clamp(-45px*7.5, -45vw, 1px);
+$food-select-h: 35vw;
+$cross-size: $food-select-h * 0.225;
+$cross-padding: ($food-select-h - $cross-size)/2vw * 1%;
+
+/* Modal.vue */
+$modal-top-bar-h: 10vw;
+$cat-row-h: 20vw;
+
+/* card */
+$card-line-wgt: clamp(1px, 0.8vw, 1*7.5px);
+$chara-row-base-h: 23vw;
+$card-font: clamp(1px, $chara-row-base-h*1.3/10, $chara-row-base-h*1.3/10/1vw*6px);
+$chara-row-h: clamp(1px, $chara-row-base-h, $chara-row-base-h/1vw*7.5px);
+$chara-h: clamp(1px, $chara-row-base-h*5.5/10, $chara-row-base-h*5.5/10/1vw*7.5px);
+$chara-border-wgt: clamp(1px, $chara-row-base-h*0.2/10, $chara-row-base-h*0.2/10/1vw*7.5px);
+$card-outside-radius: 20px;
+
+/* NutritionCard.vue */
+$nut-detail-font: clamp(1px, $chara-row-base-h*1.5/10, $chara-row-base-h*1.5/10/1vw*6px);
+$nut-chara-top-m: clamp(1px, $chara-row-base-h*1/10, $chara-row-base-h*1/10/1vw*7.5px);
+$nut-chara-bottom-m: clamp(1px, $chara-row-base-h*0.4/10, $chara-row-base-h*0.4/10/1vw*7.5px);
+
+/* ResultCard.vue */
+$judgment-none-h: clamp(1px, $chara-row-base-h*0.7/10, $chara-row-base-h*0.7/10/1vw*7.5px);
+$judgment-none-top-m: clamp(1px, $chara-row-base-h*4.3/10, $chara-row-base-h*4.3/10/1vw*7.5px);
+$judgment-none-bottom-m: clamp(1px, $chara-row-base-h*3/10, $chara-row-base-h*3/10/1vw*7.5px);
+
+$judgment-good-h: clamp(1px, $chara-row-base-h*4.8/10, $chara-row-base-h*4.8/10/1vw*7.5px);
+$judgment-good-top-m: clamp(1px, $chara-row-base-h*1/10, $chara-row-base-h*1/10/1vw*7.5px);
+$judgment-good-bottom-m: clamp(1px, $chara-row-base-h*0.5/10, $chara-row-base-h*0.5/10/1vw*7.5px);
+$judgment-good-wgt: clamp(1px, $chara-row-base-h*0.8/10, $chara-row-base-h*0.8/10/1vw*7.5px);
+
+$judgment-bad-h: clamp(1px, $chara-row-base-h*6.8/10, $chara-row-base-h*6.8/10/1vw*7.5px);
+$judgment-bad-top-m: clamp(1px, $chara-row-base-h*0.9/10, $chara-row-base-h*0.9/10/1vw*7.5px);
+$judgment-bad-bottom-m: clamp(1px, $chara-row-base-h*0.2/10, $chara-row-base-h*0.2/10/1vw*7.5px);
+
+$rslt-chara-top-m: clamp(1px, $chara-row-base-h*1.3/10, $chara-row-base-h*1.3/10/1vw*7.5px);
+$rslt-chara-bottom-m: clamp(1px, $chara-row-base-h*0.7/10, $chara-row-base-h*0.7/10/1vw*7.5px);
+$rslt-chara-cross-h: clamp(1px, $chara-row-base-h/4, $chara-row-base-h/4/1vw*7.5px);
+
+$card-inside-radius: 13px;
