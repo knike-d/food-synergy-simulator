@@ -136,9 +136,9 @@ export default {
     color: black;
     background: $main-color;
     border-radius: 50px;
-    cursor: pointer;
     transition: background-color .3s;
-    @include hover($accent-color);
+    @include click-effect();
+    @include hover_active($accent-color);
   }
 }
 

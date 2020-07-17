@@ -60,9 +60,9 @@ export default {
     height: 100%;
     background-color: white;
     border: 1px dotted black;
-    cursor: pointer;
     transition: background-color .3s;
-    @include hover($hover-color);
+    @include click-effect();
+    @include hover_active($hover-color);
     .plus-mark{
       position: relative;
       width: 3%;

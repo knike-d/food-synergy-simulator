@@ -148,11 +148,8 @@ export default {
     transition: cubic-bezier(0.4, 0, 0.2, 1) .2s, background-color .3s;
     user-select: none;
     white-space: nowrap;
-    cursor: pointer;
-    &:active{
-      background-color:$hover-color;
-    }
-    @include hover($hover-color);
+    @include click-effect();
+    @include hover_active($hover-color);
     &:after {
       content: '';
       position: absolute;

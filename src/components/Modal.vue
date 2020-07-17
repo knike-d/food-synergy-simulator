@@ -103,7 +103,7 @@ export default {
     width:100%;
     height:100%;
     background-color:rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    @include click-effect();
   }
   #modal-content{
     position:fixed;
@@ -125,7 +125,7 @@ export default {
         height: 100%;
         position: relative;
         display: inline-block;
-        cursor: pointer;
+        @include click-effect();
         &::before{
           content: '';
           width: 45%;
@@ -147,7 +147,7 @@ export default {
         border-radius:20px;
         margin: 0 clamp(1px,3vw,3px*7.5) 0 0;
         transform:rotate(-45deg);
-        cursor: pointer;
+        @include click-effect();
         &:before{
           position: absolute;
           content: "";
@@ -173,9 +173,9 @@ export default {
           padding: 2% 3%;
           border-top: 1px dotted $accent-color;
           border-bottom:1px dotted $main-color;
-          cursor: pointer;
           transition: background-color .3s;
-          @include hover($hover-color);
+          @include click-effect();
+          @include hover_active($hover-color);
         }
       }
       #food-cat-wrap{
@@ -190,9 +190,9 @@ export default {
           width: 100%;
           height: 100%;
           border: 1px dotted black;
-          cursor: pointer;
           transition: background-color .3s;
-          @include hover($hover-color);
+          @include click-effect();
+          @include hover_active($hover-color);
           .cat-img{
             display: block;
             width: 60%;
