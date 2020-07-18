@@ -89,53 +89,25 @@ export default {
 </script>
 
 <style lang="scss">
-$line-weight: clamp(1px, 0.8vw, 1*7.5px);
-$row-base-h: 23vw;
-$card-h: clamp(1px, $row-base-h, $row-base-h/1vw*7.5px);
-$card-font1: clamp(1px, $row-base-h*1.3/10, $row-base-h*1.3/10/1vw*6px);
-$card-font2: clamp(1px, $row-base-h*1.5/10, $row-base-h*1.5/10/1vw*6px);
-
-$chara-h: clamp(1px, $row-base-h*5.5/10, $row-base-h*5.5/10/1vw*7.5px);
-$chara-top-m: clamp(1px, $row-base-h*1/10, $row-base-h*1/10/1vw*7.5px);
-$chara-bottom-m: clamp(1px, $row-base-h*0.4/10, $row-base-h*0.4/10/1vw*7.5px);
-$chara-border-wgt: clamp(1px, $row-base-h*0.2/10, $row-base-h*0.2/10/1vw*7.5px);
-$card-outside-radius: 20px;
-
-@mixin chara-eye() {
-  position: absolute;
-  top: 20%;
-  width: 10%;
-  height: 25%;
-  background: black;
-  border-radius: 50%;
-}
-@mixin chara-mouth() {
-  position: absolute;
-  top: 53%;
-  width: 16%;
-  height: 8%;
-  border: 1px solid black;
-}
-
 .nut-card{
   display: flex;
   width: 75%;
-  height: $card-h;
+  height: clampVal($chara-row-h);
   margin: 0 auto 3% auto;
   border: solid black;
-  border-width: $line-weight;
-  border-radius: $card-outside-radius;
+  border-width: clampVal($card-line-wgt);
+  border-radius: clampVal($card-outside-radius);
   .chara-wrap{
     width: 32%;
-    margin: $chara-top-m 3% 0 3%;
+    margin: clampVal($nut-chara-top-m) 3% 0 3%;
     .chara{
       position: relative;
-      width: $chara-h;
-      height: $chara-h;
+      width: clampVal($chara-h);
+      height: clampVal($chara-h);
       border: solid black;
-      border-width: $chara-border-wgt;
+      border-width: clampVal($chara-border-wgt);
       border-radius: 50%;
-      margin: 0 auto $chara-bottom-m auto;
+      margin: 0 auto clampVal($nut-chara-bottom-m) auto;
       .chara-eye-left{
         @include chara-eye();
         right: 40%;
@@ -152,14 +124,14 @@ $card-outside-radius: 20px;
       }
     }
     .chara-name{
-      font-size: $card-font1;
+      font-size: clampVal($card-fs, 6);
       font-weight: bold;
       white-space: nowrap;
     }
   }
   .section-line{
     height: 90%;
-    width: $line-weight;
+    width: clampVal($card-line-wgt);
     margin-top: 1.5%;
     background-color: black;
   }
@@ -168,7 +140,7 @@ $card-outside-radius: 20px;
     flex-flow: column;
     justify-content:space-around;
     font-weight: bold;
-    font-size: $card-font2;
+    font-size: clampVal($nut-detail-font, 6);
     text-align: left;
     margin: 3.5% 0 3% 4%;
   }

@@ -88,16 +88,6 @@ export default {
 </script>
 
 <style lang="scss">
-$icon-height: 10vw;
-$row-height: 20vw;
-@mixin hover($hover-color) {
-  @media (hover: hover) {
-    &:hover {
-      background-color: $hover-color;
-    }
-  }
-}
-
 #modal{
   position:fixed;
   top:0;
@@ -113,61 +103,57 @@ $row-height: 20vw;
     width:100%;
     height:100%;
     background-color:rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    @include click-effect();
   }
   #modal-content{
-    position:fixed;
-    width:80vw;
-    max-width:70px * 7.5;
-    padding-top: 2%;
+    position: fixed;
+    width: clampVal($modal-w, 6.5);
+    padding-top: 1%;
     padding-bottom: 5%;
     background-color: white;
     #top-bar{
       display: flex;
       justify-content: space-between;
       width: 90%;
-      height: $icon-height;
-      max-height: $icon-height/1vw * 6px;
-      margin: 0 auto 4% auto;
+      height: clampVal($modal-top-bar-h, 6);
+      margin: 0 auto 2% auto;
       #back-btn{
-        width: $icon-height;
-        max-width: $icon-height/1vw * 6px;
+        width: clampVal($modal-top-bar-h, 6);
         height: 100%;
         position: relative;
         display: inline-block;
-        cursor: pointer;
+        @include click-effect();
         &::before{
           content: '';
-          width: 40%;
-          height: 40%;
-          border-bottom: solid clamp(1px,1vw,1px*7.5) #FFCF4A;
-          border-left: solid clamp(1px,1vw,1px*7.5) #FFCF4A;
+          width: 45%;
+          height: 45%;
+          border: solid $main-color;
+          border-width: 0 0 clampVal($back-btn-size) clampVal($back-btn-size);
           transform: rotate(45deg);
           position: absolute;
-          top: 28%;
+          top: 24%;
           left: 10%;
         }
       }
       #close-btn{
         position: relative;
-        width: $icon-height/10;
-        max-width: $icon-height/10vw * 7.5px;
+        width: clampVal($modal-top-bar-h/10);
         height: 100%;
-        background-color: #FFCF4A;
+        background-color: $main-color;
         border-radius:20px;
-        margin: 0 clamp(1px,3vw,3px*7.5) 0 0;
+        margin: 0 clampVal($close-btn-size) 0 0;
         transform:rotate(-45deg);
-        cursor: pointer;
+        @include click-effect();
         &:before{
           position: absolute;
           content: "";
-          background-color: #FFCF4A;
+          background-color: $main-color;
           border-radius:20px;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          transform:rotate(90deg);
+          transform: rotate(90deg);
         }
       }
     }
@@ -179,13 +165,13 @@ $row-height: 20vw;
         .food-item{
           list-style: none;
           text-align: left;
-          font-size: clamp(1px, 3vw, 3px*5.5);
+          font-size: clampVal($modal-fs, 6);
           padding: 2% 3%;
-          border-top: 1px dotted orange;
-          border-bottom:1px dotted #FFCF4A;
-          cursor: pointer;
+          border-top: 1px dotted $accent-color;
+          border-bottom:1px dotted $main-color;
           transition: background-color .3s;
-          @include hover(#e8e8e8);
+          @include click-effect();
+          @include hover_active($hover-color);
         }
       }
       #food-cat-wrap{
@@ -193,16 +179,16 @@ $row-height: 20vw;
         width: 90%;
         height: auto;
         gap: 2% 5%;
-        grid-auto-rows: clamp(1px, $row-height, $row-height/1vw*7.5px);
+        grid-auto-rows: clampVal($cat-row-h);
         grid-template-columns: 1fr 1fr 1fr;
         margin: 0 auto 20% auto;
         .food-cat{
           width: 100%;
           height: 100%;
           border: 1px dotted black;
-          cursor: pointer;
           transition: background-color .3s;
-          @include hover(#e8e8e8);
+          @include click-effect();
+          @include hover_active($hover-color);
           .cat-img{
             display: block;
             width: 60%;
@@ -212,7 +198,7 @@ $row-height: 20vw;
           }
           .cat-name{
             display: block;
-            font-size: clamp(1px, 3vw, 3px*6);
+            font-size: clampVal($modal-fs, 6);
             width: 100%;
             height: 19%;
             margin: auto;

@@ -1,0 +1,36 @@
+@mixin click-effect(){
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@mixin hover_active($color) {
+    @media (hover: hover) {
+        &:hover {
+            background-color: $color;
+        }
+    }
+    &:active{
+        background-color: $color;
+    }
+}
+
+@mixin fade-in-anime($direction) {
+    animation: $direction 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+/* card */
+@mixin chara-eye() {
+    position: absolute;
+    top: 20%;
+    width: 10%;
+    height: 25%;
+    background: black;
+    border-radius: 50%;
+}
+@mixin chara-mouth() {
+    position: absolute;
+    top: 53%;
+    width: 16%;
+    height: 8%;
+    border: 1px solid black;
+}

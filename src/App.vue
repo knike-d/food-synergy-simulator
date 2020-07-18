@@ -55,6 +55,10 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #000;
+  .luxbar-brand{
+    @include click-effect();
+    @include hover_active($hover-color);
+  }
 }
 
 .footer{

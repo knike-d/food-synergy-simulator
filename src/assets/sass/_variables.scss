@@ -1,0 +1,66 @@
+$max-w-multiplier: 7.5;
+$main-color: #ffcf4a;
+$accent-color: #ffbb00;
+$hover-color: #efefef;
+$cross-color: #4b4b4b;
+$md-fs: 3.8vw;
+$sm-fs: 3.4vw;
+$xs-fs: 3vw;
+
+/* Content.vue */
+$top-header-h: 66vw;
+$top-bg-h: 20vw;
+$top-title-fs: 8vw;
+$top-title-line-h: 12vw;
+$top-title-top-m: 8vw;
+$top-title-posx: -45vw;
+$food-select-h: 35vw;
+$cross-size: $food-select-h * 0.225;
+$cross-padding: ($food-select-h - $cross-size)/2vw * 1%;
+$rslt-fs: $md-fs;
+$rslt-btn-m: 3vw;
+
+/* FoodSelectButton.vue */
+$btn-text-fs: $sm-fs;
+
+/* TabContainer.vue */
+$tab-lavel-fs: $md-fs;
+
+/* Modal.vue */
+$modal-w: 80vw;
+$modal-top-bar-h: 10vw;
+$back-btn-size: 1vw;
+$close-btn-size: 3vw;
+$cat-row-h: 20vw;
+$modal-fs: $xs-fs;
+
+/* card */
+$card-line-wgt: 0.8vw;
+$chara-row-base-h: 23vw;
+$card-fs: $chara-row-base-h*1.3/10;
+$chara-row-h: $chara-row-base-h;
+$chara-h: $chara-row-base-h*5.5/10;
+$chara-border-wgt: $chara-row-base-h*0.2/10;
+$card-outside-radius: 5.4vw;
+
+/* NutritionCard.vue */
+$nut-detail-font: $chara-row-base-h*1.5/10;
+$nut-chara-top-m: $chara-row-base-h*1/10;
+$nut-chara-bottom-m: $chara-row-base-h*0.4/10;
+
+/* ResultCard.vue */
+$judgment-none-h: $chara-row-base-h*0.7/10;
+$judgment-none-top-m: $chara-row-base-h*4.3/10;
+$judgment-none-bottom-m: $chara-row-base-h*3/10;
+$judgment-good-h: $chara-row-base-h*4.8/10;
+$judgment-good-top-m: $chara-row-base-h*1/10;
+$judgment-good-bottom-m: $chara-row-base-h*0.6/10;
+$judgment-good-wgt: $chara-row-base-h*0.8/10;
+$judgment-bad-h: $chara-row-base-h*6.8/10;
+$judgment-bad-top-m: $chara-row-base-h*0.9/10;
+$judgment-bad-bottom-m: $chara-row-base-h*0.3/10;
+$rslt-chara-top-m: $chara-row-base-h*1.3/10;
+$rslt-chara-bottom-m: $chara-row-base-h*0.8/10;
+$rslt-chara-cross-h: $chara-row-base-h/4;
+$explanation-fs: $sm-fs;
+$explanation-line-h: 5.5vw;

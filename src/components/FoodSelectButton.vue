@@ -1,7 +1,7 @@
 <template>
   <div class="food-select-btn-wrap">
     <div v-inview:class="['fade-in-bottom']" class="food-select-btn" @click="openModal">
-      <div class="plus-mark" v-if="btnState"></div>
+      <div class="plus-mark" v-if="btnState"/>
       <img class="btn-img" :src="imgPath" v-else>
       <p class="btn-text">{{foodName}}</p>
     </div>
@@ -50,14 +50,6 @@ export default {
 </script>
 
 <style lang="scss">
-@mixin hover($hover-color) {
-  @media (hover: hover) {
-    &:hover {
-      background-color: $hover-color;
-    }
-  }
-}
-
 .food-select-btn-wrap{
   position: relative;
   height: 100%;
@@ -68,16 +60,16 @@ export default {
     height: 100%;
     background-color: white;
     border: 1px dotted black;
-    cursor: pointer;
     transition: background-color .3s;
-    @include hover(#efefef);
+    @include click-effect();
+    @include hover_active($hover-color);
     .plus-mark{
       position: relative;
       width: 3%;
       height: 26%;
       margin: 37% auto 20% auto;
       border-radius:20px;
-      background-color: #FFCF4A;
+      background-color: $main-color;
       &:before{
         position: absolute;
         content: "";
@@ -85,7 +77,7 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #FFCF4A;
+        background-color: $main-color;
         border-radius:20px;
         transform:rotate(90deg);
       }
@@ -98,7 +90,7 @@ export default {
       margin: auto;
     }
     .btn-text{
-      font-size: clamp(1px, 3.4vw, 3.4px*6);
+      font-size: clampVal($btn-text-fs, 6);
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -108,8 +100,6 @@ export default {
     }
   }
 }
-
-@mixin fade-in-anime($direction) {animation: $direction 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;}
 
 @keyframes fade-in-bottom {
   0% {transform:translateY(5vw); opacity: 0;}

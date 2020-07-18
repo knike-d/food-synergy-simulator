@@ -20,8 +20,8 @@
         <div class="chara-name">{{ nutrition[0] }}</div>
       </div>
 
-      <div class="chara-multiply-wrap">
-        <div class="chara-multiply"/>
+      <div class="chara-cross-wrap">
+        <div class="chara-cross"/>
       </div>
 
       <div class="chara-wrap">
@@ -110,79 +110,38 @@ export default {
 </script>
 
 <style lang="scss">
-$line-weight: clamp(1px, 0.8vw, 1*7.5px);
-$row-base-h: 23vw;
-$grid-row-h: clamp(1px, $row-base-h, $row-base-h/1vw*7.5px);
-$card-font1: clamp(1px, $row-base-h*1.3/10, $row-base-h*1.3/10/1vw*6px);
-
-$judgment-none-h: clamp(1px, $row-base-h*0.7/10, $row-base-h*0.7/10/1vw*7.5px);
-$judgment-none-top-m: clamp(1px, $row-base-h*4.3/10, $row-base-h*4.3/10/1vw*7.5px);
-$judgment-none-bottom-m: clamp(1px, $row-base-h*3.1/10, $row-base-h*3.1/10/1vw*7.5px);
-
-$judgment-good-h: clamp(1px, $row-base-h*4.8/10, $row-base-h*4.8/10/1vw*7.5px);
-$judgment-good-top-m: clamp(1px, $row-base-h*1/10, $row-base-h*1/10/1vw*7.5px);
-$judgment-good-bottom-m: clamp(1px, $row-base-h*0.7/10, $row-base-h*0.7/10/1vw*7.5px);
-
-$judgment-bad-h: clamp(1px, $row-base-h*6.6/10, $row-base-h*6.6/10/1vw*7.5px);
-$judgment-bad-top-m: clamp(1px, $row-base-h*1/10, $row-base-h*1/10/1vw*7.5px);
-$judgment-bad-bottom-m: clamp(1px, $row-base-h*0.5/10, $row-base-h*0.5/10/1vw*7.5px);
-
-$chara-h: clamp(1px, $row-base-h*5.5/10, $row-base-h*5.5/10/1vw*7.5px);
-$chara-top-m: clamp(1px, $row-base-h*1.5/10, $row-base-h*1.5/10/1vw*7.5px);
-$chara-bottom-m: clamp(1px, $row-base-h*0.7/10, $row-base-h*0.7/10/1vw*7.5px);
-$chara-border-wgt: clamp(1px, $row-base-h*0.2/10, $row-base-h*0.2/10/1vw*7.5px);
-$chara-multiply-h: clamp(1px, $row-base-h/4, $row-base-h/4/1vw*7.5px);
-$judgment-wgt: clamp(1px, $row-base-h*0.8/10, $row-base-h*0.8/10/1vw*7.5px);
-$card-outside-radius: 20px;
-$card-inside-radius: 13px;
-
-@mixin chara-eye() {
-  position: absolute;
-  top: 20%;
-  width: 10%;
-  height: 25%;
-  background: black;
-  border-radius: 50%;
-}
-@mixin chara-mouth() {
-  position: absolute;
-  top: 53%;
-  width: 16%;
-  height: 8%;
-  border: 1px solid black;
-}
-
 .result-card{
   display: grid;
   width: 85%;
   height: auto;
-  grid-template-rows: $grid-row-h $line-weight 1fr;
-  grid-template-columns: 1fr $line-weight 2fr;
+  grid-template-rows: clampVal($chara-row-h) clampVal($card-line-wgt) 1fr;
+  grid-template-columns: 1fr clampVal($card-line-wgt) 2fr;
   margin: 0 auto 4% auto;
   border: solid black;
-  border-width: $line-weight;
-  border-radius: $card-outside-radius;
+  border-width: clampVal($card-line-wgt);
+  border-radius: clampVal($card-outside-radius);
+  overflow:hidden;
   .judgment-wrap{
     grid-row: 1;
     grid-column: 1;
     .judgment-none{
       width: 30%;
-      height: $judgment-none-h;
-      margin: $judgment-none-top-m auto $judgment-none-bottom-m auto;
+      height: clampVal($judgment-none-h);
+      margin: clampVal($judgment-none-top-m) auto clampVal($judgment-none-bottom-m) auto;
       background: black;
     }
     .judgment-good{
-      width: $judgment-good-h;
-      height: $judgment-good-h;
-      margin: $judgment-good-top-m auto $judgment-good-bottom-m auto;
+      width: clampVal($judgment-good-h);
+      height: clampVal($judgment-good-h);
+      margin: clampVal($judgment-good-top-m) auto clampVal($judgment-good-bottom-m) auto;
       border-radius: 50%;
       border: solid red;
-      border-width: $judgment-wgt;
+      border-width: clampVal($judgment-good-wgt);
     }
     .judgment-bad{
-      width: $judgment-bad-h;
-      height: $judgment-bad-h;
-      margin: $judgment-bad-top-m auto $judgment-bad-bottom-m auto;
+      width: clampVal($judgment-bad-h);
+      height: clampVal($judgment-bad-h);
+      margin: clampVal($judgment-bad-top-m) auto clampVal($judgment-bad-bottom-m) auto;
       .bad-mark{
         height:100%;
         width:100%;
@@ -190,7 +149,7 @@ $card-inside-radius: 13px;
         position:relative;
         &:before, &:after{
           content:'';
-          height:15%;
+          height:14%;
           width:100%;
           display:block;
           background:#0486FF;
@@ -206,7 +165,7 @@ $card-inside-radius: 13px;
       }
     }
     .number{
-      font-size: $card-font1;
+      font-size: clampVal($card-fs, 6);
       font-weight: bold;
       white-space: nowrap;
     }
@@ -224,16 +183,16 @@ $card-inside-radius: 13px;
     grid-column: 3;
     .chara-wrap{
       display: inline-block;
-      margin: $chara-top-m auto 0 auto;
+      margin: clampVal($rslt-chara-top-m) auto 0 auto;
       width: 44%;
       .charaL{
         position: relative;
-        width: $chara-h;
-        height: $chara-h;
+        width: clampVal($chara-h);
+        height: clampVal($chara-h);
         border: solid black;
-        border-width: $chara-border-wgt;
+        border-width: clampVal($chara-border-wgt);
         border-radius: 50%;
-        margin: 0 auto $chara-bottom-m auto;
+        margin: 0 auto clampVal($rslt-chara-bottom-m) auto;
         .charaL-eye-left{
           @include chara-eye();
           right: 40%;
@@ -257,12 +216,12 @@ $card-inside-radius: 13px;
       }
       .charaR{
         position: relative;
-        width: $chara-h;
-        height: $chara-h;
+        width: clampVal($chara-h);
+        height: clampVal($chara-h);
         border: solid black;
-        border-width: $chara-border-wgt;
+        border-width: clampVal($chara-border-wgt);
         border-radius: 50%;
-        margin: 0 auto $chara-bottom-m auto;
+        margin: 0 auto clampVal($rslt-chara-bottom-m) auto;
         .charaR-eye-left{
           @include chara-eye();
           left: 20%;
@@ -285,17 +244,17 @@ $card-inside-radius: 13px;
         }
       }
       .chara-name{
-        font-size: $card-font1;
+        font-size: clampVal($card-fs, 6);
         font-weight: bold;
         white-space: nowrap;
       }
     }
-    .chara-multiply-wrap{
-      width: $chara-multiply-h;
-      height: $chara-multiply-h;
+    .chara-cross-wrap{
+      width: clampVal($rslt-chara-cross-h);
+      height: clampVal($rslt-chara-cross-h);
       display: inline-block;
       padding: 0 0 14% 0 ;
-      .chara-multiply{
+      .chara-cross{
         height:100%;
         width:100%;
         display:block;
@@ -328,15 +287,13 @@ $card-inside-radius: 13px;
   .explanation-wrap{
     grid-row: 3;
     grid-column: 1 / 4;
-    background-color: #FFCF4A;
-    border-radius: 0 0 $card-inside-radius $card-inside-radius;
-    z-index: -1;
+    background-color: $main-color;
     .explanation{
-      font-size: clamp(1px, 3.3vw, 3.3px*6);
-      line-height: clamp(1px, 5.5vw, 5.5px*6);
+      font-size: clampVal($explanation-fs, 6);
+      line-height: clampVal($explanation-line-h, 6);
       font-weight: bold;
       text-align: left;
-      background-color: #FFF;
+      background-color: white;
       border-radius: 7px;
       width: 85%;
       padding: 3%;
