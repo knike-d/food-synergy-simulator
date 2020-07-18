@@ -106,9 +106,8 @@ export default {
     @include click-effect();
   }
   #modal-content{
-    position:fixed;
-    width:80vw;
-    max-width:70px * 7.5;
+    position: fixed;
+    width: clampVal($modal-w, 6.5);
     padding-top: 1%;
     padding-bottom: 5%;
     background-color: white;
@@ -116,12 +115,10 @@ export default {
       display: flex;
       justify-content: space-between;
       width: 90%;
-      height: $modal-top-bar-h;
-      max-height: $modal-top-bar-h/1vw * 6px;
+      height: clampVal($modal-top-bar-h, 6);
       margin: 0 auto 2% auto;
       #back-btn{
-        width: $modal-top-bar-h;
-        max-width: $modal-top-bar-h/1vw * 6px;
+        width: clampVal($modal-top-bar-h, 6);
         height: 100%;
         position: relative;
         display: inline-block;
@@ -131,7 +128,7 @@ export default {
           width: 45%;
           height: 45%;
           border: solid $main-color;
-          border-width: 0 0 clamp(1px,1vw,1px*7.5) clamp(1px,1vw,1px*7.5);
+          border-width: 0 0 clampVal($back-btn-size) clampVal($back-btn-size);
           transform: rotate(45deg);
           position: absolute;
           top: 24%;
@@ -140,12 +137,11 @@ export default {
       }
       #close-btn{
         position: relative;
-        width: $modal-top-bar-h/10;
-        max-width: $modal-top-bar-h/10vw * 7.5px;
+        width: clampVal($modal-top-bar-h/10);
         height: 100%;
         background-color: $main-color;
         border-radius:20px;
-        margin: 0 clamp(1px,3vw,3px*7.5) 0 0;
+        margin: 0 clampVal($close-btn-size) 0 0;
         transform:rotate(-45deg);
         @include click-effect();
         &:before{
@@ -157,7 +153,7 @@ export default {
           left: 0;
           width: 100%;
           height: 100%;
-          transform:rotate(90deg);
+          transform: rotate(90deg);
         }
       }
     }
@@ -169,7 +165,7 @@ export default {
         .food-item{
           list-style: none;
           text-align: left;
-          font-size: clamp(1px, 3vw, 3px*6);
+          font-size: clampVal($modal-fs, 6);
           padding: 2% 3%;
           border-top: 1px dotted $accent-color;
           border-bottom:1px dotted $main-color;
@@ -183,7 +179,7 @@ export default {
         width: 90%;
         height: auto;
         gap: 2% 5%;
-        grid-auto-rows: clamp(1px, $cat-row-h, $cat-row-h/1vw*7.5px);
+        grid-auto-rows: clampVal($cat-row-h);
         grid-template-columns: 1fr 1fr 1fr;
         margin: 0 auto 20% auto;
         .food-cat{
@@ -202,7 +198,7 @@ export default {
           }
           .cat-name{
             display: block;
-            font-size: clamp(1px, 3vw, 3px*6);
+            font-size: clampVal($modal-fs, 6);
             width: 100%;
             height: 19%;
             margin: auto;

@@ -114,33 +114,34 @@ export default {
   display: grid;
   width: 85%;
   height: auto;
-  grid-template-rows: $chara-row-h $card-line-wgt 1fr;
-  grid-template-columns: 1fr $card-line-wgt 2fr;
+  grid-template-rows: clampVal($chara-row-h) clampVal($card-line-wgt) 1fr;
+  grid-template-columns: 1fr clampVal($card-line-wgt) 2fr;
   margin: 0 auto 4% auto;
   border: solid black;
-  border-width: $card-line-wgt;
-  border-radius: $card-outside-radius;
+  border-width: clampVal($card-line-wgt);
+  border-radius: clampVal($card-outside-radius);
+  overflow:hidden;
   .judgment-wrap{
     grid-row: 1;
     grid-column: 1;
     .judgment-none{
       width: 30%;
-      height: $judgment-none-h;
-      margin: $judgment-none-top-m auto $judgment-none-bottom-m auto;
+      height: clampVal($judgment-none-h);
+      margin: clampVal($judgment-none-top-m) auto clampVal($judgment-none-bottom-m) auto;
       background: black;
     }
     .judgment-good{
-      width: $judgment-good-h;
-      height: $judgment-good-h;
-      margin: $judgment-good-top-m auto $judgment-good-bottom-m auto;
+      width: clampVal($judgment-good-h);
+      height: clampVal($judgment-good-h);
+      margin: clampVal($judgment-good-top-m) auto clampVal($judgment-good-bottom-m) auto;
       border-radius: 50%;
       border: solid red;
-      border-width: $judgment-good-wgt;
+      border-width: clampVal($judgment-good-wgt);
     }
     .judgment-bad{
-      width: $judgment-bad-h;
-      height: $judgment-bad-h;
-      margin: $judgment-bad-top-m auto $judgment-bad-bottom-m auto;
+      width: clampVal($judgment-bad-h);
+      height: clampVal($judgment-bad-h);
+      margin: clampVal($judgment-bad-top-m) auto clampVal($judgment-bad-bottom-m) auto;
       .bad-mark{
         height:100%;
         width:100%;
@@ -164,7 +165,7 @@ export default {
       }
     }
     .number{
-      font-size: $card-font;
+      font-size: clampVal($card-fs, 6);
       font-weight: bold;
       white-space: nowrap;
     }
@@ -182,16 +183,16 @@ export default {
     grid-column: 3;
     .chara-wrap{
       display: inline-block;
-      margin: $rslt-chara-top-m auto 0 auto;
+      margin: clampVal($rslt-chara-top-m) auto 0 auto;
       width: 44%;
       .charaL{
         position: relative;
-        width: $chara-h;
-        height: $chara-h;
+        width: clampVal($chara-h);
+        height: clampVal($chara-h);
         border: solid black;
-        border-width: $chara-border-wgt;
+        border-width: clampVal($chara-border-wgt);
         border-radius: 50%;
-        margin: 0 auto $rslt-chara-bottom-m auto;
+        margin: 0 auto clampVal($rslt-chara-bottom-m) auto;
         .charaL-eye-left{
           @include chara-eye();
           right: 40%;
@@ -215,12 +216,12 @@ export default {
       }
       .charaR{
         position: relative;
-        width: $chara-h;
-        height: $chara-h;
+        width: clampVal($chara-h);
+        height: clampVal($chara-h);
         border: solid black;
-        border-width: $chara-border-wgt;
+        border-width: clampVal($chara-border-wgt);
         border-radius: 50%;
-        margin: 0 auto $rslt-chara-bottom-m auto;
+        margin: 0 auto clampVal($rslt-chara-bottom-m) auto;
         .charaR-eye-left{
           @include chara-eye();
           left: 20%;
@@ -243,14 +244,14 @@ export default {
         }
       }
       .chara-name{
-        font-size: $card-font;
+        font-size: clampVal($card-fs, 6);
         font-weight: bold;
         white-space: nowrap;
       }
     }
     .chara-cross-wrap{
-      width: $rslt-chara-cross-h;
-      height: $rslt-chara-cross-h;
+      width: clampVal($rslt-chara-cross-h);
+      height: clampVal($rslt-chara-cross-h);
       display: inline-block;
       padding: 0 0 14% 0 ;
       .chara-cross{
@@ -263,7 +264,7 @@ export default {
           height:15%;
           width:100%;
           display:block;
-          background:$cross-color;
+          background:black;
           border-radius:10px;
           position:absolute;
           top:43%;
@@ -287,11 +288,9 @@ export default {
     grid-row: 3;
     grid-column: 1 / 4;
     background-color: $main-color;
-    border-radius: 0 0 $card-inside-radius $card-inside-radius;
-    z-index: -1;
     .explanation{
-      font-size: clamp(1px, 3.3vw, 3.3px*6);
-      line-height: clamp(1px, 5.5vw, 5.5px*6);
+      font-size: clampVal($explanation-fs, 6);
+      line-height: clampVal($explanation-line-h, 6);
       font-weight: bold;
       text-align: left;
       background-color: white;

@@ -90,7 +90,7 @@ export default {
       margin: auto;
     }
     .btn-text{
-      font-size: clamp(1px, 3.4vw, 3.4px*6);
+      font-size: clampVal($btn-text-fs, 6);
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;

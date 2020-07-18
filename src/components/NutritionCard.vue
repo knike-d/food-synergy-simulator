@@ -92,22 +92,22 @@ export default {
 .nut-card{
   display: flex;
   width: 75%;
-  height: $chara-row-h;
+  height: clampVal($chara-row-h);
   margin: 0 auto 3% auto;
   border: solid black;
-  border-width: $card-line-wgt;
-  border-radius: $card-outside-radius;
+  border-width: clampVal($card-line-wgt);
+  border-radius: clampVal($card-outside-radius);
   .chara-wrap{
     width: 32%;
-    margin: $nut-chara-top-m 3% 0 3%;
+    margin: clampVal($nut-chara-top-m) 3% 0 3%;
     .chara{
       position: relative;
-      width: $chara-h;
-      height: $chara-h;
+      width: clampVal($chara-h);
+      height: clampVal($chara-h);
       border: solid black;
-      border-width: $chara-border-wgt;
+      border-width: clampVal($chara-border-wgt);
       border-radius: 50%;
-      margin: 0 auto $nut-chara-bottom-m auto;
+      margin: 0 auto clampVal($nut-chara-bottom-m) auto;
       .chara-eye-left{
         @include chara-eye();
         right: 40%;
@@ -124,14 +124,14 @@ export default {
       }
     }
     .chara-name{
-      font-size: $card-font;
+      font-size: clampVal($card-fs, 6);
       font-weight: bold;
       white-space: nowrap;
     }
   }
   .section-line{
     height: 90%;
-    width: $card-line-wgt;
+    width: clampVal($card-line-wgt);
     margin-top: 1.5%;
     background-color: black;
   }
@@ -140,7 +140,7 @@ export default {
     flex-flow: column;
     justify-content:space-around;
     font-weight: bold;
-    font-size: $nut-detail-font;
+    font-size: clampVal($nut-detail-font, 6);
     text-align: left;
     margin: 3.5% 0 3% 4%;
   }

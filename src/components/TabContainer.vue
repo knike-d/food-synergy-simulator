@@ -138,7 +138,7 @@ export default {
   }
   .tab-label {
     position: relative;
-    font-size: clamp(1px, 3.8vw, 3.8px*5);
+    font-size: clampVal($tab-lavel-fs, 5);
     font-weight: bold;
     text-align: center;
     padding: 2.5% 5%;

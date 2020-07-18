@@ -1,3 +1,8 @@
+@mixin click-effect(){
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
 @mixin hover_active($color) {
     @media (hover: hover) {
         &:hover {
@@ -28,9 +33,4 @@
     width: 16%;
     height: 8%;
     border: 1px solid black;
-}
-
-@mixin click-effect(){
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
 }

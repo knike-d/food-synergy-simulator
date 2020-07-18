@@ -55,14 +55,13 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap');
 .top{
-  height: 66vw;
-  max-height: 66px*7.5;
+  height: clampVal($top-header-h);
   position: relative;
   background-color: $main-color;
   &:after{
     content: '';
     width: 100%;
-    height: $top-bg-h;
+    height: clampVal($top-bg-h, 16);
     position: absolute;
     bottom: 0;
     background-size: 100%;
@@ -76,61 +75,60 @@ export default {
   .top-title{
     position: absolute;
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: clamp(1px, 8vw, 8px*6);
+    font-size: clampVal($top-title-fs, 6);
     font-weight: bold;
-    line-height: clamp(1px, 12vw, 12px*5.5);
+    line-height: clampVal($top-title-line-h, 5.5);
     color: black;
     white-space: nowrap;
     text-align: left;
-    margin-top: clamp(1px, 8vw, 8px*7.5);
+    margin-top: clampVal($top-title-top-m);
     left: 50%;
-    transform: translateX($top-title-posx);
+    transform: translateX(clampVal($top-title-posx, 0, 7.5));
     z-index: 1;
   }
 }
 .main-content{
-  max-width: 750px;
+  max-width: $max-w-multiplier * 100px;
   margin: auto;
   .food-select-wrap{
     position: relative;
     z-index: 2;
     display: flex;
     justify-content: center;
-    height: $food-select-h;
-    max-height: $food-select-h/1vw * 7.5 * 1px;
+    height: clampVal($food-select-h);
     margin: 5% 0 5% 0;
     .cross-wrap{
       height: $cross-size/$food-select-h * 100%;
       width: $cross-size/1vw * 1%;
       padding: $cross-padding 4% $cross-padding 4%;
       .cross{
-        height:100%;
-        width:100%;
-        position:relative;
+        height: 100%;
+        width: 100%;
+        position: relative;
         &:before, &:after{
-          content:'';
-          height:15%;
-          width:100%;
-          display:block;
-          background:$cross-color;
-          border-radius:10px;
-          position:absolute;
-          top:43%;
-          transform:rotate(-45deg);
+          content: '';
+          height: 15%;
+          width: 100%;
+          display: block;
+          background: $cross-color;
+          border-radius: 10px;
+          position: absolute;
+          top: 43%;
+          transform: rotate(-45deg);
         }
         &:after{
-          transform:rotate(45deg);
+          transform: rotate(45deg);
         }
       }
     }
   }
   .result-btn{
     display: block;
-    font-size: clamp(1px, 3.8vw, 3.8px*5);
+    font-size: clampVal($rslt-fs, 5);
     font-weight: bold;
     width: 50%;
     margin: auto;
-    padding: clamp(1px, 3vw, 3px*5) clamp(1px, 6vw, 6px*5);
+    padding: clampVal($rslt-btn-m, 5) clampVal($rslt-btn-m*2, 5);
     text-align: center;
     text-decoration: none;
     color: black;
@@ -143,12 +141,12 @@ export default {
 }
 
 @keyframes fade-in-right {
-  0% {transform:translateX(-6vw); opacity: 0;}
-  100% {transform:translateX($top-title-posx); opacity: 1;}
+  0% {transform: translateX(-6vw); opacity: 0;}
+  100% {transform: translateX(clampVal($top-title-posx, 0, 7.5)); opacity: 1;}
 }
 @keyframes fade-in-bottom {
-  0% {transform:translateY(5vw); opacity: 0;}
-  100% {transform:translateY(0); opacity: 1;}
+  0% {transform: translateY(5vw); opacity: 0;}
+  100% {transform: translateY(0); opacity: 1;}
 }
 .fade-in-right{
   @include fade-in-anime(fade-in-right);
