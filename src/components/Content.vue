@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="top">
+    <div class="top-title-wrap">
       <div class="top-title fade-in-right">
         食べ合わせ<br>シミュレーター
       </div>
@@ -54,8 +54,8 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap');
-.top{
-  height: clampVal($top-header-h);
+.top-title-wrap{
+  height: clampVal($top-title-wrap-h);
   position: relative;
   background-color: $main-color;
   &:after{
@@ -84,7 +84,7 @@ export default {
     margin-top: clampVal($top-title-top-m);
     left: 50%;
     transform: translateX(clampVal($top-title-posx, 0, 7.5));
-    z-index: 1;
+    z-index: z-index(title);
   }
 }
 .main-content{
@@ -92,7 +92,6 @@ export default {
   margin: auto;
   .food-select-wrap{
     position: relative;
-    z-index: 2;
     display: flex;
     justify-content: center;
     height: clampVal($food-select-h);

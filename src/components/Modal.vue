@@ -97,7 +97,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index:100;
+  z-index: z-index(modal);
   #modal-overlay{
     position:fixed;
     width:100%;
