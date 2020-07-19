@@ -9,3 +9,7 @@
     }
 	@return clamp($min, $val, $max);
 }
+
+@function z-index($name) {
+    @return index($z-index, $name);
+}

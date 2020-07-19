@@ -161,7 +161,6 @@ export default {
       opacity: 0;
       transform: translateX(100%);
       transition: cubic-bezier(0.4, 0, 0.2, 1) .2s 80ms;
-      z-index: 1;
       pointer-events: none;
     }
   }

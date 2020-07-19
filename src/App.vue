@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <header id="luxbar" class="luxbar-static" style="margin-bottom: 40px;z-index:10;box-shadow:none;">
+    <header id="luxbar" class="luxbar-static">
       <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
-      <div class="luxbar-menu luxbar-menu-right luxbar-menu-light" style="background-color: white;">
+      <div class="luxbar-menu luxbar-menu-right">
           <ul class="luxbar-navigation">
               <li class="luxbar-header">
                   <a href="#" class="luxbar-brand">KNKDEV.com</a>
@@ -54,7 +54,7 @@ export default {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #000;
+  color: black;
   .luxbar-brand{
     @include click-effect();
     @include hover_active($hover-color);
@@ -62,11 +62,11 @@ export default {
 }
 
 .footer{
-  border-top: 7px solid #e0e0e0;
+  border-top: 7px solid darkgray;
   padding: 3rem 0 5rem 0;
   margin-top: 2rem;
-  color: #000;
-  background-color: #FFF;
+  color: black;
+  background-color: white;
   ul {
     list-style: none;
     padding-inline-start: 0;
