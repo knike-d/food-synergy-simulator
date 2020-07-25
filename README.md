@@ -1,26 +1,29 @@
-# food-synergy-simulator
+# 食べ合わせシミュレーター
 
-## 6/20に新たにプラグインを追加 npm install --save vueinview
+食材同士の食べ合わせをシミュレートできるWebサービスです。  
+シミュレート結果には、選択した２つの食材の主な栄養素と栄養素同士の相性が表示されます。  
+相性結果は現時点で100種類以上あります。
 
-## Project setup
-```
-npm install
-```
+![food-synergy-simulator](https://user-images.githubusercontent.com/52563253/87870890-0c58dc80-c9e7-11ea-85ac-e9347458f14c.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## DEMO
 
-### Compiles and minifies for production
-```
-npm run build
-```
+<https://food-synergy-simulator.netlify.app/>
 
-### Lints and fixes files
-```
-npm run lint
-```
+栄養素のない食材も選択肢に含まれています。  
+栄養素が多く含まれるアーモンドなどを選択すると相性が表示されやすいです。  
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+※ 栄養図鑑、相性図鑑と表記がありますが図鑑機能は実装していません。  
+※ KNKDEVのロゴ、プライバシーポリシー、お問い合わせのリンクは設定していません。  
+
+## 開発環境
+
+- VSCode
+- Vue.js
+- Vue-CLI
+
+
+## 開発での注意点
+
+- borderの太さを指定する時にclamp関数を使うときは、border-widthプロパティで指定すること。他プロパティで指定するとコンパイルが失敗する。  
+- clamp関数では0pxを使用しない。0pxを指定するとコンパイル後のCSSでは単位（px）が消えてclamp関数が動作しなくなる。
