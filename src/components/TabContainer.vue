@@ -4,23 +4,23 @@
     <label class="tab-label" for="tab1">左の食材</label>
     <transition name="tab1">
       <div class="tab-content" v-if="isActive === '1'">
-        <NutritionCard  v-if="!Object.keys(selectFood[0].nutrition).length" v-bind="defFood"/>
-        <NutritionCard  v-else v-for="(food1, index) in selectFoodList[0].nutrition" :key="food1.id" :nutrition="selectFoodList[0].nutrition[index]"/>
+        <NutritionCard  v-if="!foodList.length || !foodList[0].nutrition.length"/>
+        <NutritionCard  v-else v-for="(food1, index) in foodList[0].nutrition" :key="food1.id" :nutrition="foodList[0].nutrition[index]"/>
       </div>
     </transition>
     <input id="tab2" type="radio" value="2" name="tab" class="tab-switch" v-model="isActive"/>
     <label class="tab-label" for="tab2">右の食材</label>
     <transition name="tab2" :enter-class="tab2Enter" :leave-to-class="tab2LeaveTo">
       <div class="tab-content" v-if="isActive === '2'">
-        <NutritionCard  v-if="!Object.keys(selectFood[1].nutrition).length" v-bind="defFood"/>
-        <NutritionCard  v-else v-for="(food2, index) in selectFoodList[1].nutrition" :key="food2.id" :nutrition="selectFoodList[1].nutrition[index]"/>
+        <NutritionCard  v-if="!foodList.length || !foodList[1].nutrition.length"/>
+        <NutritionCard  v-else v-for="(food2, index) in foodList[1].nutrition" :key="food2.id" :nutrition="foodList[1].nutrition[index]"/>
       </div>
     </transition>
     <input id="tab3" type="radio" value="3" name="tab" class="tab-switch" v-model="isActive"/>
     <label class="tab-label" for="tab3">食べ合わせ相性</label>
     <transition name="tab3">
       <div class="tab-content" v-if="isActive === '3'">
-        <ResultCard  v-if="results.length == 0" v-bind="defResult"/>
+        <ResultCard  v-if="results.length === 0"/>
         <ResultCard  v-else v-for="(result, index) in results" :key="result.id" v-bind="results[index]"/>
       </div>
     </transition>
@@ -45,29 +45,7 @@ export default {
       tab2LeaveTo: "tab2-fade-out-L",
       foodSynergyList: foodSynergyList,
       results:[],
-      selectFood:[
-        {
-          "category": "なし",
-          "id": 0,
-          "name": "なし",
-          "nutrition": []
-        },
-        {
-          "category": "なし",
-          "id": 0,
-          "name": "なし",
-          "nutrition": []
-        }
-      ],
-      defResult:{
-        id: 0,
-        judgment: -999,
-        nutrition: ["なし", "なし"],
-        explanation: "表示できる組み合わせはありません。"
-      },
-      defFood:{
-        nutrition: "主な栄養なし"
-      }
+      foodList:[]
     }
   },
   props: {
@@ -77,13 +55,13 @@ export default {
   },
   methods: {
     calcResult(){
-      this.selectFood.splice(0,2,this.selectFoodList[0],this.selectFoodList[1])
-      const selectFood = this.selectFood
+      this.foodList = this.selectFoodList
+      const [leftFoodNutList, rightFoodNutList] = [this.foodList[0].nutrition, this.foodList[1].nutrition]
       const results = this.foodSynergyList.filter(item => {
-        for(let i=0; i<selectFood[0].nutrition.length; i++){
-          for(let j=0; j<selectFood[1].nutrition.length; j++){
-            const comparisonList = [].concat(selectFood[0].nutrition[i], selectFood[1].nutrition[j])
-            if(item.nutrition.sort().toString() == comparisonList.sort().toString()) return true
+        for(const leftFoodNut of leftFoodNutList){
+          for(const rightFoodNut of rightFoodNutList){
+            const comparisonList = [].concat(leftFoodNut, rightFoodNut)
+            if(item.nutrition.sort().toString() === comparisonList.sort().toString()) return true
           }
         }
       })
@@ -97,18 +75,12 @@ export default {
   watch: {
     isActive(){
       if(this.isActive == "2"){
-        if(this.beforeActive < 2){
-          this.tab2Enter = "tab2-fade-out-R"
-        }else if(this.beforeActive > 2){
-          this.tab2Enter = "tab2-fade-out-L"
-        }
+        this.tab2Enter = 
+          this.beforeActive < 2 ? "tab2-fade-out-R" : "tab2-fade-out-L"
       }
       if(this.beforeActive == 2){
-        if(2 < Number(this.isActive)){
-          this.tab2LeaveTo = "tab2-fade-out-L"
-        }else if(2 > Number(this.isActive)){
-          this.tab2LeaveTo = "tab2-fade-out-R"
-        }
+        this.tab2LeaveTo = 
+          Number(this.isActive) < 2 ? "tab2-fade-out-R" : "tab2-fade-out-L"
       }
       this.beforeActive = Number(this.isActive)
     }

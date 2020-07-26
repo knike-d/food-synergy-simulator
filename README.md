@@ -2,14 +2,19 @@
 
 食材同士の食べ合わせをシミュレートできるWebサービスです。  
 シミュレート結果には、選択した２つの食材の主な栄養素と栄養素同士の相性が表示されます。  
+相性結果は現時点で100種類以上あります。
 
 ![food-synergy-simulator](https://user-images.githubusercontent.com/52563253/87870890-0c58dc80-c9e7-11ea-85ac-e9347458f14c.png)
 
 ## DEMO
 
+<https://food-synergy-simulator.netlify.app/>
+
 栄養素のない食材も選択肢に含まれています。  
 栄養素が多く含まれるアーモンドなどを選択すると相性が表示されやすいです。  
-<https://food-synergy-simulator.netlify.app/>
+
+※ 栄養図鑑、相性図鑑と表記がありますが図鑑機能は実装していません。  
+※ KNKDEVのロゴ、プライバシーポリシー、お問い合わせのリンクは設定していません。  
 
 ## 開発環境
 

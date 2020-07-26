@@ -64,9 +64,7 @@ export default {
     goFoodList(curCategory){
       this.foodListState = true
       this.foodList = allFoodList.filter(item => {
-        if(item.category == curCategory.name){
-          return true
-        }
+        if(item.category === curCategory.name) return true
       })
     },
     backFoodList(){
@@ -75,13 +73,10 @@ export default {
     closeFoodList(){
       this.$emit("close")
     },
-    returnFoodId(item){      
-      for(let i=0;i<this.category.length;i++){
-        if(item.category == this.category[i].name){
-          this.foodListState = false
-          this.$emit("update-btn", item, this.category[i].imgPath)
-        }
-      }
+    returnFoodId(foodData){
+      const selectCat = this.category.find((item) => item.name === foodData.category)
+      this.backFoodList()
+      this.$emit("update-btn", foodData, selectCat.imgPath)
     }
   }
 }
