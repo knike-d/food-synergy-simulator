@@ -18,9 +18,12 @@
 
 <script>
 export default {
-  props:[
-    "nutrition"
-  ],
+  props:{
+    nutrition: {
+      type: String,
+      default: "主な栄養なし"
+    }
+  },
   data(){
     return{
       id: 0,

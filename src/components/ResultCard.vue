@@ -45,12 +45,24 @@
 
 <script>
 export default {
-  props:[
-    "id",
-    "judgment",
-    "nutrition",
-    "explanation"
-  ],
+  props:{
+    id: {
+      type: Number,
+      default: 0
+    },
+    judgment: {
+      type: Number,
+      default: -999
+    },
+    nutrition: {
+      type: Array,
+      default: () => ["なし", "なし"] 
+    },
+    explanation: {
+      type: String,
+      default: "表示できる組み合わせはありません。"
+    }
+  },
   data(){
     return{
       CharaLeftStyle:{
