@@ -1,32 +1,33 @@
 <template>
-<div id="modal">
-  <div id="modal-overlay" @click="closeFoodList" />
-  <div id="modal-content">
-    <div id="top-bar">
-      <transition>
-        <div id="back-btn" v-if="foodListState" @click="backFoodList"/>
-      </transition>
-      <div/>
-      <div id="close-btn" @click="closeFoodList"/>
-    </div>
-
-    <div id="content">
-      <transition>
-        <ul id="food-list" v-if="foodListState">
-          <li class="food-item" v-for="item in foodList" :key="item.id" @click="returnFoodId(item)">
-            {{ item.name }}
-          </li>
-        </ul>
-      </transition>
-      <div id="food-cat-wrap" v-if="!foodListState">
-        <div class="food-cat" v-for="item in category" :key="item.name" @click="goFoodList(item)">
-          <img class="cat-img" :src="item.imgPath">
-          <div class="cat-name">{{item.name}}</div>
+<transition name="modal">
+  <div id="modal">
+    <div id="modal-overlay" @click="closeFoodList" />
+    <div id="modal-content">
+      <div id="top-bar">
+        <transition name="back-btn">
+          <div id="back-btn" v-show="foodListState" @click="backFoodList"/>
+        </transition>
+        <div/>
+        <div id="close-btn" @click="closeFoodList"/>
+      </div>
+      <div id="content">
+        <transition name="food-list">
+          <ul id="food-list" v-show="foodListState">
+            <li class="food-item" v-for="item in foodList" :key="item.id" @click="returnFoodId(item)">
+              {{ item.name }}
+            </li>
+          </ul>
+        </transition>
+        <div id="food-cat-wrap" v-show="!foodListState">
+          <div class="food-cat" v-for="item in category" :key="item.name" @click="goFoodList(item)">
+            <img class="cat-img" :src="item.imgPath">
+            <div class="cat-name">{{item.name}}</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</transition>
 </template>
 
 <script>
@@ -71,6 +72,7 @@ export default {
       this.foodListState = false
     },
     closeFoodList(){
+      this.backFoodList()
       this.$emit("close")
     },
     returnFoodId(foodData){
@@ -203,11 +205,14 @@ export default {
     }
   }
 }
-
-.v-enter-active, .v-leave-active {
-  transition: opacity .3s;
+.modal-enter-active, .modal-leave-active, 
+.food-list-enter-active, .food-list-leave-active, 
+.back-btn-enter-active, .back-btn-leave-active {
+  transition: opacity .4s;
 }
-.v-enter, .v-leave-to {
+.modal-enter, .modal-leave-to, 
+.food-list-enter, .food-list-leave-to, 
+.back-btn-enter, .back-btn-leave-to {
   opacity: 0;
 }
 </style>

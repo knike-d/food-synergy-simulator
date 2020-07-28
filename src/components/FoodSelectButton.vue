@@ -5,9 +5,7 @@
       <img class="btn-img" :src="imgPath" v-else>
       <p class="btn-text">{{foodName}}</p>
     </div>
-    <transition name="modal">
-      <Modal v-if="modalState" @update-btn="updateBtn" @close="closeModal" />
-    </transition>
+    <Modal v-show="modalState" @update-btn="updateBtn" @close="closeModal" />
   </div>
 </template>
 
@@ -107,12 +105,5 @@ export default {
 }
 .fade-in-bottom{
   @include fade-in-anime(fade-in-bottom);
-}
-
-.modal-enter-active, .modal-leave-active {
-  transition: opacity .5s;
-}
-.modal-enter, .modal-leave-to {
-  opacity: 0;
 }
 </style>
